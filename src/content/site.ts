@@ -51,7 +51,7 @@ export const site = {
 
 export const media={
   intro:'/assets/images/6a44eec1ed1af2c4c403dfca_intro-thumb.jpg',
-  truck:'/assets/wow/brand/truck-branded.svg',
+  truck:'/assets/wow/brand/truck-branded-blue.svg',
   container:'/assets/wow/brand/container-branded.svg',
   plane:'/assets/wow/brand/plane-branded.svg',
   ship:'/assets/images/6a44eec1ed1af2c4c403e800_home-ship.avif',
