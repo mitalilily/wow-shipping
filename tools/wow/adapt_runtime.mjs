@@ -20,6 +20,9 @@ for(const relative of ['main.js',...list.filter(x=>x.endsWith('.js')).map(x=>'ch
   // Keep native scroll position while the optional animation runtime starts.
   if(!text.includes('y(void 0),void 0,G.init(e)'))throw new Error('Inspect initial scroll reset before adapting');
   text=text.replace('y(void 0),void 0,G.init(e)','void 0,G.init(e)');
+  if(!text.includes('beforeOnce(e){p.init()')||!text.includes('this.restoreBodyScroll(),s.refresh(),this.oncePlay(e)'))throw new Error('Inspect first-load scroll lifecycle before adapting');
+  text=text.replace('beforeOnce(e){p.init()','beforeOnce(e){window.__WOW_START_SCROLL__=window.scrollY,p.init()');
+  text=text.replace('this.restoreBodyScroll(),s.refresh(),this.oncePlay(e)','this.restoreBodyScroll(),s.refresh(),window.__WOW_START_SCROLL__>0&&p.lenis?.scrollTo(window.__WOW_START_SCROLL__,{immediate:!0,force:!0}),this.oncePlay(e)');
   const min='Object.values(e).map(e=>new e)';
   const formatted='Object.values(e).map((e) => new e())';
   if(text.includes(min))text=text.replace(min,'Object.entries(e).filter(([k])=>!["Partners","Insight","Faq","Cta","Footer","Testi"].includes(k)).map(([,v])=>new v)');
