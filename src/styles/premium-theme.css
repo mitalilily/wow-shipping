@@ -248,18 +248,16 @@ body{color:var(--wow-ink)}
 /* Reference direction: a light atmospheric page, with the dark colour confined to the globe. */
 @font-face{font-family:Manrope;src:url('/assets/fonts/Manrope-Medium.ttf') format('truetype');font-weight:400 600;font-display:swap}
 @font-face{font-family:Manrope;src:url('/assets/fonts/Manrope-ExtraBold.ttf') format('truetype');font-weight:700 900;font-display:swap}
-:root{--wow-blue:#0875c8;--wow-ink:#17191f;--wow-paper:#f8fafb;--wow-line:#dce4e6;--wow-font:Manrope,Arial,sans-serif}
-.wow-header{background:#fbf6f0ee;border-bottom:1px solid #e9ddd080}
-.wow-header.is-scrolled,.wow-header.is-open{background:#fbf6f0f7}
+:root{--wow-blue:#0875c8;--wow-ink:#17191f;--wow-paper:#fff8f2;--wow-line:#e8ded5;--wow-font:Manrope,Arial,sans-serif}
+.wow-header{background:#fff8f2;border-bottom:1px solid #e8ded580}
+.wow-header.is-scrolled,.wow-header.is-open{background:#fff8f2f7}
 .wow-brand-symbol{width:48px;height:48px}
 .wow-brand-name,.wow-footer .wow-brand-name{font-size:22px;letter-spacing:-.07em;font-weight:800;color:#101923}
 .wow-desktop-nav a{font-size:15px;font-weight:500;text-transform:none;letter-spacing:-.02em}
 .wow-button,.wow-home .home-hero-btn .btn{background:#0875c8;border-color:#0875c8;color:white}
 .wow-home .home-hero-btn:nth-child(2) .btn{background:#ffffffad;border-color:#0875c8;color:#075fa4}
-.wow-home .home-hero-wrap{background:#fbf6f0}
-.wow-home .home-hero{background:radial-gradient(ellipse at 84% 47%,#fff0dc 0%,#fbf6f0 55%);color:var(--wow-ink)}
-.wow-home .home-hero-bg,.wow-home .home-hero-bg-mb{opacity:.04!important;mix-blend-mode:screen}
-.wow-home .home-hero-bg-star{opacity:.05!important}
+.wow-home .home-hero-wrap,.wow-home .home-hero{background:#fff8f2;color:var(--wow-ink)}
+.wow-home .home-hero-bg,.wow-home .home-hero-bg-mb,.wow-home .home-hero-bg-star{display:none!important}
 .wow-home .home-hero-text-wrap{padding-top:150px!important;padding-bottom:85px!important;opacity:1!important}
 .wow-home .home-hero-text-wrap .split-line-p{background:none!important;color:var(--color-final,#17191f)!important;transform:none!important}
 .wow-home .home-hero-text-wrap .home-hero-btn{opacity:1!important;transform:none!important}
@@ -289,7 +287,7 @@ body{color:var(--wow-ink)}
  .wow-home .wow-globe-air-plane{left:10px;top:-46px;width:170px}
  .wow-home .globe-label-text[data-country="MALAYSIA"],.wow-home .globe-label-text[data-country="SOUTH KOREA"]{display:none}
  .wow-home .home-hero-text-wrap{padding-top:48svh!important;padding-bottom:42px!important}
- .wow-home .home-hero-text-wrap:before{background:linear-gradient(transparent,#fbf6f0e8 16%,#fbf6f0 58%)}
+ .wow-home .home-hero-text-wrap:before{background:linear-gradient(transparent,#fff8f2e8 16%,#fff8f2 58%)}
  .wow-home .home-hero-title .h1{font-size:clamp(39px,10vw,62px)!important}
  .wow-home .home-hero-globe:before{inset:13%}
 }
