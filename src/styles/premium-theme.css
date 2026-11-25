@@ -239,6 +239,7 @@ body{color:var(--wow-ink)}
 @media(max-width:767px){.wow-home .home-hero-globe:before{inset:13%}}
 
 .wow-home .home-service-sub{background:#0a2043;color:#fffaf2}
+.wow-home .home-service-sub .txt,.wow-home .home-service-desc.sub .txt,.wow-home .home-service-mb-desc .txt{-webkit-user-select:none;user-select:none}
 .wow-home .home-service-sub .txt,.wow-home .home-service-sub .split-line{color:#e1e5ec!important;-webkit-text-fill-color:#e1e5ec;background:none!important}
 .wow-home .home-service-sub .heading{color:#fffaf2}
 
