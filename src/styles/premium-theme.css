@@ -144,10 +144,10 @@ body{color:var(--wow-ink)}
 @media(max-width:1023px){
 .wow-header{height:76px;display:flex;justify-content:space-between;gap:20px}
 .wow-desktop-nav,.wow-header-quote{display:none}.wow-menu-toggle{display:inline-flex}
-.wow-home .home-hero-title,.wow-home .home-hero-title .h1{width:min(610px,65vw)!important}
+.wow-home .home-hero-title,.wow-home .home-hero-title .h1{width:min(610px,52vw)!important}
 .wow-home .home-hero-globe{right:-36vw}
 .wow-home .home-hero-title .h1{font-size:clamp(43px,5.6vw,62px)!important}
-.wow-home .home-hero-desc{width:min(470px,56vw)}
+.wow-home .home-hero-desc{width:min(470px,50vw)}
 .wow-hero-trust{width:min(470px,56vw)}
 .wow-courier-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 .wow-footer-grid{grid-template-columns:1fr 1fr;gap:40px}
@@ -161,10 +161,11 @@ body{color:var(--wow-ink)}
 .wow-home .home-hero-text-wrap:before{content:"";position:absolute;inset:43svh 0 0;z-index:-1;background:linear-gradient(transparent 0,#fbf7f0ed 15%,#fbf7f0 40%);pointer-events:none}
 .wow-home .home-hero-label{margin-bottom:18px}
 .wow-home .home-hero-label .txt{font-size:11px;line-height:1.45;max-width:330px}
-.wow-home .home-hero-title,.wow-home .home-hero-title .h1{width:100%!important;max-width:100%}
+.wow-home .home-hero-text-wrap{padding-left:2%!important;padding-right:3%!important}
+.wow-home .home-hero-title,.wow-home .home-hero-title .h1{width:min(100%,69vw)!important;max-width:69vw}
 .wow-home .home-hero-title{margin:0 0 24px}
 .wow-home .home-hero-title .h1{font-size:clamp(38px,10vw,62px)!important;line-height:1.03!important}
-.wow-home .home-hero-desc{width:100%;max-width:100%;margin:0 0 25px}
+.wow-home .home-hero-desc{width:min(100%,65vw);max-width:65vw;margin:0 0 25px}
 .wow-hero-subheading{font-size:19px;margin-bottom:14px}
 .wow-home .home-hero-desc .txt{font-size:16px;line-height:1.6}
 .wow-home .home-hero-links{gap:10px;width:100%}
