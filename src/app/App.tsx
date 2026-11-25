@@ -1,7 +1,6 @@
 import {ThemeBranding} from '../components/shared/ThemeBranding';
 import { GlobalDecor } from '../components/shared/GlobalDecor';
 import { PageStyles } from '../components/shared/PageStyles';
-import { Preloader } from '../components/preloader/Preloader';
 import { PageTransition } from '../components/preloader/PageTransition';
 import { Header } from '../components/navigation/Header';
 import { Footer } from '../components/footer/Footer';
@@ -20,7 +19,6 @@ export default function App() {
   useHomepageRuntime();
   return <>
     <GlobalDecor />
-    <Preloader />
     <PageTransition />
     <div className="body-inner">
       <ThemeBranding/><Header />
