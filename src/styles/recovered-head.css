@@ -48,10 +48,10 @@
     transform: translate(0%, 0%);
   }
   .home-service-empty-block.first-screen {
-    height: 600vh;
+    height: 150vh;
   }
   .home-service-empty-block.second-screen {
-    height: 1100vh;
+    height: 250vh;
   }
   .home-service-main-inner {
     display: flex;
