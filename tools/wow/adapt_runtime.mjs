@@ -16,6 +16,10 @@ for(const relative of ['main.js',...list.filter(x=>x.endsWith('.js')).map(x=>'ch
  if(relative==='main.js'){
   text=text.replace(/var E\s*=\s*\[[\s\S]*?\];/, `var E=${JSON.stringify([...new Set(['localhost','127.0.0.1','[::1]','wowshippings.com','www.wowshippings.com',siteHostname])])};`);
   text=text.replaceAll('T.init(e)','void 0');
+  // The archived first-load reset can run after the visitor has already scrolled.
+  // Keep native scroll position while the optional animation runtime starts.
+  if(!text.includes('y(void 0),void 0,G.init(e)'))throw new Error('Inspect initial scroll reset before adapting');
+  text=text.replace('y(void 0),void 0,G.init(e)','void 0,G.init(e)');
   const min='Object.values(e).map(e=>new e)';
   const formatted='Object.values(e).map((e) => new e())';
   if(text.includes(min))text=text.replace(min,'Object.entries(e).filter(([k])=>!["Partners","Insight","Faq","Cta","Footer","Testi"].includes(k)).map(([,v])=>new v)');
