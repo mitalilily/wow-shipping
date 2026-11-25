@@ -260,7 +260,7 @@ body{color:var(--wow-ink)}
 .wow-home .home-hero{background:radial-gradient(ellipse at 15% 72%,#f4eccd 0%,transparent 38%),radial-gradient(ellipse at 83% 76%,#a9dfe4 0%,transparent 43%),linear-gradient(115deg,#e6eeee 0%,#d0e7e6 51%,#9cc4c3 100%);color:var(--wow-ink)}
 .wow-home .home-hero-bg,.wow-home .home-hero-bg-mb{opacity:.13!important;mix-blend-mode:screen}
 .wow-home .home-hero-bg-star{opacity:.16!important}
-.wow-home .home-hero-text-wrap{padding-top:150px!important;padding-bottom:85px!important}
+.wow-home .home-hero-text-wrap{padding-top:150px!important;padding-bottom:85px!important;opacity:1!important}
 .wow-home .home-hero-text-wrap .split-line-p{background:none!important;color:var(--color-final,#17191f)!important;transform:none!important}
 .wow-home .home-hero-text-wrap .home-hero-btn{opacity:1!important;transform:none!important}
 .wow-home .home-hero-title .h1{font-weight:800!important;letter-spacing:-.055em!important;font-size:clamp(48px,5.2vw,88px)!important;line-height:1.04!important;color:#17191f}
