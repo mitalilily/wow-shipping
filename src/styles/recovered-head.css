@@ -26,10 +26,7 @@
   }
   @media only screen and (min-width: 768px) {
     body.body {
-      overflow: hidden;
-      position: fixed;
-      max-height: 100vh;
-      inset: 0;
+      overflow: auto;
     }
   }
   @media only screen and (max-width: 767px) {

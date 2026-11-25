@@ -1,5 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { lazy, Suspense } from 'react';
+import App from './app/App';
 import './styles/recovered-head.css';
 import './styles/accessibility.css';
 import './styles/wow.css';
@@ -16,7 +17,7 @@ if(page==='home'&&!reduceMotion&&location.hash){window.__WOW_INITIAL_HASH__=loca
 document.body.dataset.page=page;
 document.body.classList.add(page==='home'&&!reduceMotion?'wow-home':'wow-inner-page');
 // Keep each lazy import explicit so Vite attaches its CSS preload dependencies.
-const Home=page==='about'?lazy(()=>import('./pages/AboutPage')):page==='tracking'?lazy(()=>import('./pages/TrackingPage')):page==='contact'?lazy(()=>import('./pages/ContactPage')):reduceMotion?lazy(()=>import('./app/ReducedMotionHome')):lazy(()=>import('./app/App'));
-createRoot(root).render(<Suspense fallback={null}><Home/></Suspense>);
+const OtherPage=page==='about'?lazy(()=>import('./pages/AboutPage')):page==='tracking'?lazy(()=>import('./pages/TrackingPage')):page==='contact'?lazy(()=>import('./pages/ContactPage')):lazy(()=>import('./app/ReducedMotionHome'));
+createRoot(root).render(page==='home'&&!reduceMotion?<App/>:<Suspense fallback={null}><OtherPage/></Suspense>);
 
 if(import.meta.hot)import.meta.hot.accept(()=>window.location.reload());
