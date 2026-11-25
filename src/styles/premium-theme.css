@@ -271,10 +271,11 @@ body{color:var(--wow-ink)}
 .wow-home .home-hero-globe:before{inset:3.5%;background:radial-gradient(ellipse at 58% 115%,#0852d3 0%,#071953 19%,transparent 53%),radial-gradient(ellipse at 46% -6%,#db4f14 0%,#5d2417 9%,transparent 27%),radial-gradient(circle at 45% 38%,#070b16 5%,#01040b 66%,#010510 100%);box-shadow:inset 0 14px 19px -11px #ff7b27,inset 0 -20px 24px -15px #2caaff,0 16px 65px #0548ba60,0 0 35px #ef7a4140}
 .wow-home .wow-globe-air{position:absolute;left:32%;top:41%;width:240px;height:110px;z-index:4!important;pointer-events:none;transform:rotate(-12deg)}
 .wow-home .wow-globe-air-route{position:absolute;left:0;top:53px;width:175px;height:75px;border-top:1px dashed #ffa657a8;border-radius:50%;transform:rotate(-16deg);filter:drop-shadow(0 0 4px #ff8b33)}
-.wow-home .wow-globe-air-plane{position:absolute;left:85px;top:9px;width:138px;height:auto;filter:drop-shadow(0 8px 7px #000b) drop-shadow(0 0 9px #ffae5766);animation:wow-globe-air-drift 8s ease-in-out infinite}
+.wow-home .wow-globe-air-plane{position:absolute;left:15px;top:-80px;width:285px;height:auto;filter:drop-shadow(0 17px 12px #000b) drop-shadow(0 0 8px #ffae5744);animation:wow-globe-air-drift 8s ease-in-out infinite}
 @keyframes wow-globe-air-drift{0%,100%{transform:translate3d(0,0,0) rotate(-3deg)}50%{transform:translate3d(9px,-5px,0) rotate(2deg)}}
 .wow-home .home-hero-canvas{filter:none;opacity:1}
-.wow-home .globe-label-text{background:#101921d9;color:#fff;border:0;font-size:10px!important}
+.wow-home .globe-label-text{background:#101921dd;color:#fff;border:0;font-size:9px!important;padding:3px 5px;letter-spacing:.025em}
+.wow-home .globe-label-text[data-country="UAE"],.wow-home .globe-label-text[data-country="QATAR"],.wow-home .globe-label-text[data-country="OMAN"],.wow-home .globe-label-text[data-country="KUWAIT"],.wow-home .globe-label-text[data-country="JORDAN"]{display:none}
 .wow-cta{background:#0b3472}
 .wow-home .home-service-sub{background:#0b3472}
 .wow-flight-section .wow-flight-stage{background:linear-gradient(145deg,#e4f0f1,#f8fafb)}
@@ -285,7 +286,8 @@ body{color:var(--wow-ink)}
  .wow-home .home-hero-globe{right:-52vw;top:50px}
  .wow-home .wow-globe-air{left:34%;top:31%;width:155px;height:75px}
  .wow-home .wow-globe-air-route{top:36px;width:125px;height:46px}
- .wow-home .wow-globe-air-plane{left:48px;top:0;width:98px}
+ .wow-home .wow-globe-air-plane{left:10px;top:-46px;width:170px}
+ .wow-home .globe-label-text[data-country="MALAYSIA"],.wow-home .globe-label-text[data-country="SOUTH KOREA"]{display:none}
  .wow-home .home-hero-text-wrap{padding-top:48svh!important;padding-bottom:42px!important}
  .wow-home .home-hero-text-wrap:before{background:linear-gradient(transparent,#fbf6f0e8 16%,#fbf6f0 58%)}
  .wow-home .home-hero-title .h1{font-size:clamp(39px,10vw,62px)!important}
