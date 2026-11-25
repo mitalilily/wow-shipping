@@ -27,6 +27,11 @@ for(const relative of ['main.js',...list.filter(x=>x.endsWith('.js')).map(x=>'ch
  if(relative.includes('vendor-three-'))text=text.replace('i.forEach(function(t){St.get(t).currentProgram.isReady()&&i.delete(t)})','i.forEach(function(t){const p=St.get(t).currentProgram;(!p||p.isReady())&&i.delete(t)})');
  if(relative.includes('Home-')){
   text=text.replaceAll('this._globePhi=3.8','this._globePhi=2.8').replaceAll('this._globePhi = 3.8','this._globePhi = 2.8');
+  const truckManifest=text.match(/S=JSON\.parse\('(\[[^']+\])'\)/);
+  if(!truckManifest)throw new Error('Inspect truck sequence manifest before adapting');
+  const truckFrames=JSON.parse(truckManifest[1]);
+  truckFrames.forEach((frame,index)=>{frame.hostedUrl=`/assets/wow/brand/truck-sequence/frame_${String(index-index%2).padStart(2,'0')}.webp`});
+  text=text.replace(truckManifest[0],`S=JSON.parse('${JSON.stringify(truckFrames)}')`);
  }
  if(relative.includes('my-flights-')){
   const pointsStart=text.indexOf('const[o,i]=await Promise.all([');
