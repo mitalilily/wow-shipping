@@ -41,6 +41,11 @@ for(const relative of ['main.js',...list.filter(x=>x.endsWith('.js')).map(x=>'ch
   text=text.replace(truckManifest[0],`S=JSON.parse('${JSON.stringify(truckFrames)}')`);
  }
  if(relative.includes('my-flights-')){
+  const planeAnchor='const lt=new r,ct=new r,dt=new r,gt=new r,ut=';
+  if(!text.includes(planeAnchor)||!text.includes('J.update(),k.render(I,K),j.render(I,K)'))throw new Error('Inspect globe projection before adapting aircraft');
+  const planeMotion=`const wowPlane=n.parentNode?.querySelector('.wow-globe-air-plane'),wowRoute=M.flightsData?.flights?.find(f=>f.status&&f.to==='CPT'),wowFrom=wowRoute&&D(wowRoute.startLat,wowRoute.startLng,1.002),wowTo=wowRoute&&D(wowRoute.endLat,wowRoute.endLng,1.002),wowLift=wowRoute?M.arcAltBase+Math.min(.5,wowFrom.distanceTo(wowTo)*M.arcAltMultiplier):0,wowPosition=new r,wowAhead=new r,wowMotionStart=performance.now();function wowArcPoint(progress,target){return target.copy(wowFrom).lerp(wowTo,progress).normalize().multiplyScalar(1.002+4*wowLift*progress*(1-progress))}function wowUpdatePlane(){if(!wowPlane||!wowRoute)return;const progress=((performance.now()-wowMotionStart)/15000)%1;wowArcPoint(progress,wowPosition);wowArcPoint(Math.min(.999,progress+.008),wowAhead);q.updateMatrixWorld(!0);K.updateMatrixWorld();q.localToWorld(wowPosition);q.localToWorld(wowAhead);const inFront=wowPosition.z>.12;wowPosition.project(K);wowAhead.project(K);const width=n.clientWidth,height=n.clientHeight,x=(wowPosition.x+1)*width/2,y=(1-wowPosition.y)*height/2,ax=(wowAhead.x+1)*width/2,ay=(1-wowAhead.y)*height/2;wowPlane.style.transform='translate3d('+x+'px,'+y+'px,0) translate(-50%,-50%) rotate('+Math.atan2(ay-y,ax-x)+'rad)';wowPlane.style.opacity=inFront&&progress>.025&&progress<.975&&x>0&&x<width&&y>0&&y<height?'1':'0';wowPlane.dataset.route='MOH-CPT'};`;
+  text=text.replace(planeAnchor,planeMotion+planeAnchor);
+  text=text.replace('J.update(),k.render(I,K),j.render(I,K)','J.update(),wowUpdatePlane(),k.render(I,K),j.render(I,K)');
   const pointsStart=text.indexOf('const[o,i]=await Promise.all([');
   const pointsEnd=text.indexOf(']);if(S)return',pointsStart);
   if(pointsStart<0||pointsEnd<0)throw new Error('Inspect globe sampling before adapting');
