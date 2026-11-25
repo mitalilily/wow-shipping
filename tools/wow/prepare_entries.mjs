@@ -1,10 +1,10 @@
-import fs from 'node:fs/promises';
+﻿import fs from 'node:fs/promises';
 import path from 'node:path';
 import {site} from '../../src/content/site.ts';
 import {siteOrigin} from './deployment.mjs';
 const root=path.resolve(import.meta.dirname,'../..');
 const metadata=JSON.parse(await fs.readFile(path.join(root,'src/recovered/metadata.json'),'utf8'));
-const pages=[{id:'home',title:'WOW Shipping | Domestic & International Door-to-Door Shipping',description:site.hero.description},{id:'about',title:'About WOW Shipping | Built Around Your Shipment',description:'Meet WOW Shipping, based in Mohali, Punjab. Domestic and international shipping enquiries, planned around your next move.'},{id:'tracking',title:'Track a Shipment | WOW Shipping',description:'Get help with your AWB or consignment number. Track a shipment or ask the WOW Shipping team for an update.'},{id:'contact',title:'Contact WOW Shipping | Get a Shipping Quote',description:'Request a shipping quote on WhatsApp, call +91 7973546092 or email info@wowshippings.com.'}];
+const pages=[{id:'home',title:'WOW Shippings | Domestic & International Door-to-Door Shipping',description:site.hero.description},{id:'about',title:'About WOW Shippings | Built Around Your Shipment',description:'Meet WOW Shippings, based in Mohali, Punjab. Domestic and international shipping enquiries, planned around your next move.'},{id:'tracking',title:'Track a Shipment | WOW Shippings',description:'Get help with your AWB or consignment number. Track a shipment or ask the WOW Shippings team for an update.'},{id:'contact',title:'Contact WOW Shippings | Get a Shipping Quote',description:'Request a shipping quote on WhatsApp, call +91 7973546092 or email info@wowshippings.com.'}];
 const escape=s=>s.replaceAll('&','&amp;').replaceAll('"','&quot;');
 for(const p of pages){const folder=p.id==='home'?root:path.join(root,p.id);await fs.mkdir(folder,{recursive:true});await fs.writeFile(path.join(folder,'index.html'),`<!doctype html>
 <html lang="en" class="w-mod-js" data-wf-page="6a44eec1ed1af2c4c403df38" data-wf-site="6a44eec1ed1af2c4c403df6b">

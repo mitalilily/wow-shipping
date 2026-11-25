@@ -116,6 +116,7 @@ body{color:var(--wow-ink)}
 .wow-footer-top .wow-eyebrow{font-size:13px}
 .wow-footer .wow-brand-name{font-size:27px}
 .wow-footer .wow-brand-symbol{width:36px;height:36px}
+.wow-particle-signature>.wow-particle-fallback{font-family:Manrope,Arial,sans-serif!important;font-weight:800;letter-spacing:-.055em;font-size:clamp(27px,8.7vw,165px);padding:0 3%}
 
 /* Supporting-page content keeps its established grid, with one spacing and type scale. */
 .wow-page h1{font-size:clamp(48px,5.3vw,86px);line-height:1.03}
@@ -243,3 +244,41 @@ body{color:var(--wow-ink)}
 
 .wow-home .home-service-sub-wrap{color:#fffaf2}
 .wow-home .home-service-sub-desc .txt,.wow-home .home-service-sub-desc .split-line{color:#dce2ec!important;-webkit-text-fill-color:#dce2ec;background:none!important}
+
+/* Reference direction: a light atmospheric page, with the dark colour confined to the globe. */
+@font-face{font-family:Manrope;src:url('/assets/fonts/Manrope-Medium.ttf') format('truetype');font-weight:400 600;font-display:swap}
+@font-face{font-family:Manrope;src:url('/assets/fonts/Manrope-ExtraBold.ttf') format('truetype');font-weight:700 900;font-display:swap}
+:root{--wow-blue:#0875c8;--wow-ink:#17191f;--wow-paper:#f8fafb;--wow-line:#dce4e6;--wow-font:Manrope,Arial,sans-serif}
+.wow-header{background:#f8fafbe8;border-bottom:1px solid #dce4e680}
+.wow-header.is-scrolled,.wow-header.is-open{background:#f8fafbf7}
+.wow-brand-symbol{width:48px;height:48px}
+.wow-brand-name,.wow-footer .wow-brand-name{font-size:22px;letter-spacing:-.07em;font-weight:800;color:#101923}
+.wow-desktop-nav a{font-size:15px;font-weight:500;text-transform:none;letter-spacing:-.02em}
+.wow-button,.wow-home .home-hero-btn .btn{background:#0875c8;border-color:#0875c8;color:white}
+.wow-home .home-hero-btn:nth-child(2) .btn{background:#ffffffad;border-color:#0875c8;color:#075fa4}
+.wow-home .home-hero-wrap{background:#d7eae9}
+.wow-home .home-hero{background:radial-gradient(ellipse at 15% 72%,#f4eccd 0%,transparent 38%),radial-gradient(ellipse at 83% 76%,#a9dfe4 0%,transparent 43%),linear-gradient(115deg,#e6eeee 0%,#d0e7e6 51%,#9cc4c3 100%);color:var(--wow-ink)}
+.wow-home .home-hero-bg,.wow-home .home-hero-bg-mb{opacity:.13!important;mix-blend-mode:screen}
+.wow-home .home-hero-bg-star{opacity:.16!important}
+.wow-home .home-hero-text-wrap{padding-top:150px!important;padding-bottom:85px!important}
+.wow-home .home-hero-title .h1{font-weight:800!important;letter-spacing:-.055em!important;font-size:clamp(48px,5.2vw,88px)!important;line-height:1.04!important;color:#17191f}
+.wow-home .home-hero-label .txt{font-size:13px;letter-spacing:.12em;color:#0875c8}
+.wow-home .home-hero-desc .txt{color:#48535b;font-size:17px}
+.wow-hero-subheading{font-weight:700}
+.wow-home .home-hero-globe{right:-16vw}
+.wow-home .home-hero-globe:before{inset:3.5%;background:radial-gradient(ellipse at 58% 115%,#0852d3 0%,#071953 19%,transparent 53%),radial-gradient(ellipse at 46% -6%,#db4f14 0%,#5d2417 9%,transparent 27%),radial-gradient(circle at 45% 38%,#070b16 5%,#01040b 66%,#010510 100%);box-shadow:inset 0 14px 19px -11px #ff7b27,inset 0 -20px 24px -15px #2caaff,0 16px 65px #0548ba60,0 0 35px #ef7a4140}
+.wow-home .home-hero-canvas{filter:none;opacity:1}
+.wow-home .globe-label-text{background:#101921d9;color:#fff;border:0;font-size:10px!important}
+.wow-cta{background:#0b3472}
+.wow-home .home-service-sub{background:#0b3472}
+.wow-flight-section .wow-flight-stage{background:linear-gradient(145deg,#e4f0f1,#f8fafb)}
+.wow-inner-hero,.wow-tracking-hero,.wow-contact-hero,.wow-static-hero{background:#dcebed}
+.wow-static-hero>img{opacity:.09}
+@media(max-width:767px){
+ .wow-brand-symbol{width:39px;height:39px}.wow-brand-name{font-size:17px}
+ .wow-home .home-hero-globe{right:-52vw;top:50px}
+ .wow-home .home-hero-text-wrap{padding-top:48svh!important;padding-bottom:42px!important}
+ .wow-home .home-hero-text-wrap:before{background:linear-gradient(transparent,#d9ebeadf 16%,#d9ebea 58%)}
+ .wow-home .home-hero-title .h1{font-size:clamp(39px,10vw,62px)!important}
+ .wow-home .home-hero-globe:before{inset:13%}
+}

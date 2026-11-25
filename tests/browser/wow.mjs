@@ -1,4 +1,4 @@
-import {chromium} from 'playwright';
+﻿import {chromium} from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 const origin=process.env.TEST_ORIGIN||'http://127.0.0.1:4173';
@@ -20,7 +20,7 @@ try{
     if(route==='/'){
      await page.waitForFunction(()=>window.__WOW_RUNTIME__,null,{timeout:60000});await page.evaluate(()=>window.__WOW_RUNTIME__.gsap.ticker.lagSmoothing(0));await page.waitForFunction(()=>window.__WOW_RUNTIME__.ready,null,{timeout:60000});await page.waitForFunction(()=>document.querySelector('#globe')?.dataset.landReady==='true',null,{timeout:15000});await page.waitForTimeout(1500);
     }else await page.waitForTimeout(1200);
-    assert.match(await page.title(),/WOW Shipping/);assert.equal(await page.locator('h1').count(),1);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+    assert.match(await page.title(),/WOW Shippings/);assert.equal(await page.locator('h1').count(),1);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
     const nav=page.locator('.wow-desktop-nav');assert.equal(await nav.isVisible(),width>=1024);
     if(width>=1024){const boxes=await nav.locator('a').evaluateAll(a=>a.map(e=>e.getBoundingClientRect().y));assert.ok(Math.max(...boxes)-Math.min(...boxes)<2)}
     await page.screenshot({path:`${folder}/${route==='/'?'home':route.split('/')[1]}.png`,timeout:20000});result.checks.initial=true;

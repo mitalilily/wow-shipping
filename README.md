@@ -1,6 +1,6 @@
-# WOW Shipping
+﻿# WOW Shippings
 
-Production site: [wow-shipping.netlify.app](https://wow-shipping.netlify.app/). Pushes to `main` automatically trigger Netlify to build and publish this repository.
+Production destination: [wow-shipping.netlify.app](https://wow-shipping.netlify.app/). The repository contains the latest local build; publishing is a separate step.
 
 A four-page React/TypeScript/Vite website built around the preserved cinematic transport journey. The globe, crane and truck sequences, ship, ocean, aircraft, clouds and neutral imagery retain their original quality. WOW has its own identity, animated page chapters, navigation, concise content and enquiry flows.
 

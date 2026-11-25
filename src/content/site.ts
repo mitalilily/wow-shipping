@@ -1,6 +1,6 @@
-/** Business content is kept outside the recovered transport geometry. */
+﻿/** Business content is kept outside the recovered transport geometry. */
 export const site = {
-  name: 'WOW Shipping',
+  name: 'WOW Shippings',
   phone: '+91 7973546092', phoneHref: 'tel:+917973546092',
   whatsapp: '917973546092', email: 'info@wowshippings.com',
   location: 'Mohali, Punjab',
@@ -18,7 +18,7 @@ export const site = {
   ],
   reasons: [
     {title:'Shipping around your needs',description:'Start with your parcel, destination and priorities. We help you explore the available options.'},
-    {title:'A team you can reach',description:'Speak with WOW Shipping by phone, email or WhatsApp when you need a clearer next step.'},
+    {title:'A team you can reach',description:'Speak with WOW Shippings by phone, email or WhatsApp when you need a clearer next step.'},
     {title:'A clearer next step',description:'Understand what information to prepare, what to ask and how to move your enquiry forward.'},
   ],
   reviews:[
@@ -27,11 +27,11 @@ export const site = {
   ],
   faq:[
     {question:'How do I request a shipping quote?',answer:'Visit Contact Us and share the origin, destination, service category and approximate shipment details. You can continue your enquiry on WhatsApp or contact our team directly.'},
-    {question:'Can I enquire about domestic and international shipping?',answer:'Yes. WOW Shipping welcomes domestic and international shipping enquiries. Available routes, handling and collection options are confirmed for your shipment.'},
+    {question:'Can I enquire about domestic and international shipping?',answer:'Yes. WOW Shippings welcomes domestic and international shipping enquiries. Available routes, handling and collection options are confirmed for your shipment.'},
     {question:'What shipment details should I provide?',answer:'Tell us what you are sending, where it is travelling from and to, and its approximate weight and dimensions if known. Our team can help with the next steps.'},
     {question:'Where can I find my tracking number?',answer:'Look for the AWB or consignment number on your booking confirmation or shipment receipt. If you cannot locate it, contact the team that arranged the shipment.'},
     {question:'Why might tracking updates take time?',answer:'Updates depend on the carrier’s scans and reporting. A recent handover, transit between facilities or customs processing can affect when the next event appears.'},
-    {question:'How do I contact WOW Shipping?',answer:'Call +91 7973546092, email info@wowshippings.com or continue an enquiry on WhatsApp. Share your AWB if your question is about an existing shipment.'},
+    {question:'How do I contact WOW Shippings?',answer:'Call +91 7973546092, email info@wowshippings.com or continue an enquiry on WhatsApp. Share your AWB if your question is about an existing shipment.'},
   ],
   couriers:[
     {id:'blue-dart',name:'Blue Dart',url:'https://www.bluedart.com/',mark:'BLUE DART',tone:'#1565ab'},

@@ -1,4 +1,4 @@
-import fs from 'node:fs/promises';
+﻿import fs from 'node:fs/promises';
 import path from 'node:path';
 import {site} from '../../src/content/site.ts';
 const root=path.resolve(import.meta.dirname,'../..');
@@ -30,7 +30,6 @@ for(const name of names){
   inside(tree,'home-hero-desc','txt',site.hero.description);
   find(tree,'home-hero-label').children=[node('div','txt',[site.hero.kicker])];
   const description=find(tree,'home-hero-desc');description.children.unshift(node('p','wow-hero-subheading',[site.hero.subheading]));
-  find(tree,'home-hero-text-wrap').children.push(node('ul','wow-hero-trust',['Door-to-Door Delivery','Live Tracking','Transparent Pricing','Insured Shipments'].map(label=>node('li','',[node('span','wow-trust-check',['✓'],{'aria-hidden':'true'}),label]))));
   const links=[];walk(tree,n=>{if(n.tag==='a')links.push(n)});
   links.forEach((n,i)=>{n.attrs.href=i===0?'/contact/':'/tracking/';const t=find(n,'txt');if(t)t.children=[i===0?'Get a Quote':'Track a Shipment']});
   tree.attrs['data-wow-chapter']='origin';
@@ -42,7 +41,7 @@ for(const name of names){
   const copy=all(tree,'txt');
   for(const n of copy){const text=n.children.filter(c=>typeof c==='string').join('');
    if(/With every service|That means no finger|From countless/.test(text))n.children=[/From countless/.test(text)?'Domestic. International. Door to door.':/That means/.test(text)?'Get in touch for service options, shipment details and a quote.':site.intro.description];
-   if(/Learn more/.test(text))n.children=['Meet WOW Shipping'];
+   if(/Learn more/.test(text))n.children=['Meet WOW Shippings'];
   }
   const counters=[];walk(tree,n=>{if(n.attrs['data-count-to']!==undefined||n.attrs['data-count']!==undefined||n.attrs['data-counter']!==undefined)counters.push(n)});
   walk(tree,n=>{for(const key of Object.keys(n.attrs))if(/count|target|number/.test(key)&&key.startsWith('data-'))delete n.attrs[key]});
