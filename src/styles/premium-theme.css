@@ -269,6 +269,10 @@ body{color:var(--wow-ink)}
 .wow-hero-subheading{font-weight:700}
 .wow-home .home-hero-globe{right:-16vw}
 .wow-home .home-hero-globe:before{inset:3.5%;background:radial-gradient(ellipse at 58% 115%,#0852d3 0%,#071953 19%,transparent 53%),radial-gradient(ellipse at 46% -6%,#db4f14 0%,#5d2417 9%,transparent 27%),radial-gradient(circle at 45% 38%,#070b16 5%,#01040b 66%,#010510 100%);box-shadow:inset 0 14px 19px -11px #ff7b27,inset 0 -20px 24px -15px #2caaff,0 16px 65px #0548ba60,0 0 35px #ef7a4140}
+.wow-home .wow-globe-air{position:absolute;left:32%;top:41%;width:240px;height:110px;z-index:4!important;pointer-events:none;transform:rotate(-12deg)}
+.wow-home .wow-globe-air-route{position:absolute;left:0;top:53px;width:175px;height:75px;border-top:1px dashed #ffa657a8;border-radius:50%;transform:rotate(-16deg);filter:drop-shadow(0 0 4px #ff8b33)}
+.wow-home .wow-globe-air-plane{position:absolute;left:85px;top:9px;width:138px;height:auto;filter:drop-shadow(0 8px 7px #000b) drop-shadow(0 0 9px #ffae5766);animation:wow-globe-air-drift 8s ease-in-out infinite}
+@keyframes wow-globe-air-drift{0%,100%{transform:translate3d(0,0,0) rotate(-3deg)}50%{transform:translate3d(9px,-5px,0) rotate(2deg)}}
 .wow-home .home-hero-canvas{filter:none;opacity:1}
 .wow-home .globe-label-text{background:#101921d9;color:#fff;border:0;font-size:10px!important}
 .wow-cta{background:#0b3472}
@@ -279,11 +283,15 @@ body{color:var(--wow-ink)}
 @media(max-width:767px){
  .wow-brand-symbol{width:39px;height:39px}.wow-brand-name{font-size:17px}
  .wow-home .home-hero-globe{right:-52vw;top:50px}
+ .wow-home .wow-globe-air{left:34%;top:31%;width:155px;height:75px}
+ .wow-home .wow-globe-air-route{top:36px;width:125px;height:46px}
+ .wow-home .wow-globe-air-plane{left:48px;top:0;width:98px}
  .wow-home .home-hero-text-wrap{padding-top:48svh!important;padding-bottom:42px!important}
  .wow-home .home-hero-text-wrap:before{background:linear-gradient(transparent,#fbf6f0e8 16%,#fbf6f0 58%)}
  .wow-home .home-hero-title .h1{font-size:clamp(39px,10vw,62px)!important}
  .wow-home .home-hero-globe:before{inset:13%}
 }
+@media(prefers-reduced-motion:reduce){.wow-home .wow-globe-air-plane{animation:none}}
 
 /* A restrained 3D bank gives the branded aircraft depth without obscuring the CTA. */
 .wow-cta{isolation:isolate;background:radial-gradient(ellipse at 86% 50%,#17549b 0%,#0b3472 48%,#092654 100%)}

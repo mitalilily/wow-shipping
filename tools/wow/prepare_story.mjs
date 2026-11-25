@@ -30,6 +30,10 @@ for(const name of names){
   inside(tree,'home-hero-desc','txt',site.hero.description);
   find(tree,'home-hero-label').children=[node('div','txt',[site.hero.kicker])];
   const description=find(tree,'home-hero-desc');description.children.unshift(node('p','wow-hero-subheading',[site.hero.subheading]));
+  find(tree,'home-hero-globe').children.push(node('div','wow-globe-air',[
+   node('span','wow-globe-air-route'),
+   node('img','wow-globe-air-plane',[],{src:'/assets/wow/brand/globe-cargo-plane.svg',alt:'',loading:'eager',decoding:'async'})
+  ],{'aria-hidden':'true'}));
   const links=[];walk(tree,n=>{if(n.tag==='a')links.push(n)});
   links.forEach((n,i)=>{n.attrs.href=i===0?'/contact/':'/tracking/';const t=find(n,'txt');if(t)t.children=[i===0?'Get a Quote':'Track a Shipment']});
   tree.attrs['data-wow-chapter']='origin';

@@ -37,9 +37,10 @@ for(const relative of ['main.js',...list.filter(x=>x.endsWith('.js')).map(x=>'ch
   text=text.replace('pointSize:.005','pointSize:.008');
   text=text.replace('edgeColor:"#ffffff",fillColor:"#e2e8f0",fillOpacity:.1','edgeColor:"#09254b",fillColor:"#243b56",fillOpacity:.8');
   const atlas=mappings.find(([a])=>a.includes('land-110m.json'))?.[1];if(atlas)text=text.replace(/https:\/\/unpkg\.com\/world-atlas@[^/]+\/land-110m\.json/g,atlas);
-  const cities=[['MOH',30.7046,76.7179,'INDIA'],['DXB',25.2048,55.2708,'UAE'],['SIN',1.3521,103.8198,'SINGAPORE'],['LHR',51.5074,-.1278,'UNITED KINGDOM'],['MAD',40.4,-3.7,'SPAIN'],['FCO',41.9,12.5,'ITALY'],['CAI',30.04,31.24,'EGYPT'],['CPT',-33.9,18.42,'SOUTH AFRICA'],['SYD',-33.87,151.2,'AUSTRALIA'],['YYZ',43.65,-79.38,'CANADA'],['JFK',40.7,-74,'USA']];
+  const cities=[['MOH',30.7046,76.7179,'INDIA'],['DXB',25.2048,55.2708,'UAE'],['SIN',1.3521,103.8198,'SINGAPORE'],['LHR',51.5074,-.1278,'UNITED KINGDOM'],['MAD',40.4,-3.7,'SPAIN'],['FCO',41.9,12.5,'ITALY'],['CAI',30.04,31.24,'EGYPT'],['CPT',-33.9,18.42,'SOUTH AFRICA'],['SYD',-33.87,151.2,'AUSTRALIA'],['YYZ',43.65,-79.38,'CANADA'],['JFK',40.7,-74,'USA'],['KHI',24.86,67.01,'PAKISTAN'],['RUH',24.71,46.68,'SAUDI ARABIA'],['BKK',13.76,100.5,'THAILAND'],['CGK',-6.2,106.8,'INDONESIA'],['MNL',14.6,120.98,'PHILIPPINES'],['PEK',39.9,116.4,'CHINA'],['NRT',35.7,139.7,'JAPAN'],['NBO',-1.29,36.82,'KENYA']];
   const airports=cities.map(([code,lat,lng,city])=>({text:code,size:1,country:city,city,lat:String(lat),lng:String(lng)}));
-  const routes=cities.slice(1).map(([code,lat,lng],i)=>({type:'flight',order:i+1,from:'MOH',to:code,flightCode:`ILLUSTRATIVE-MOH-${code}`,status:true,startLat:30.7046,startLng:76.7179,endLat:lat,endLng:lng,arcAlt:.15+i*.015}));
+  const routeCodes=new Set(['DXB','SIN','LHR','MAD','FCO','CAI','CPT','SYD','YYZ','JFK']);
+  const routes=cities.filter(([code])=>routeCodes.has(code)).map(([code,lat,lng],i)=>({type:'flight',order:i+1,from:'MOH',to:code,flightCode:`ILLUSTRATIVE-MOH-${code}`,status:true,startLat:30.7046,startLng:76.7179,endLat:lat,endLng:lng,arcAlt:.15+i*.015}));
   text=text.replace('export{R as i,I as n,k as r,B as t}',`I.airports=${JSON.stringify(airports)};B.flights=${JSON.stringify(routes)};export{R as i,I as n,k as r,B as t}`);
  }
  await fs.writeFile(path.join(dest,relative),text);patches.push(relative);
