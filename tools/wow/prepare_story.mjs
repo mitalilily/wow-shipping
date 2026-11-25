@@ -31,7 +31,7 @@ for(const name of names){
   find(tree,'home-hero-label').children=[node('div','txt',[site.hero.kicker])];
   const description=find(tree,'home-hero-desc');description.children.unshift(node('p','wow-hero-subheading',[site.hero.subheading]));
   find(tree,'home-hero-globe').children.push(node('div','wow-globe-air',[
-   node('span','wow-globe-air-route'),
+   node('svg','wow-globe-air-route',[node('path','',[],{d:'M 30 185 C 105 75 245 40 370 115'})],{viewBox:'0 0 400 230','aria-hidden':'true'}),
    node('img','wow-globe-air-plane',[],{src:'/assets/wow/brand/globe-cargo-plane.webp',alt:'',loading:'eager',decoding:'async'})
   ],{'aria-hidden':'true'}));
   const links=[];walk(tree,n=>{if(n.tag==='a')links.push(n)});
