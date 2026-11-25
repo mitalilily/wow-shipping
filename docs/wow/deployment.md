@@ -14,4 +14,10 @@ Netlify project: `wow-shipping`, ID `5e6d5b48-0a27-49fa-9bb1-1de904523c03`. Prod
 
 The build and nine unit tests pass. The function was bundled and included in the production upload. Public endpoint checks pass for all four pages, canonical/social metadata, original cloud media, animation modules, Services redirect, removed-page 404s, tracking support response and input validation. Live Chrome verification passes eight route/viewport cases (four pages at 1440px and 390px) plus two reduced-motion cases. Full forward/reverse Home scrolling, mobile menus, FAQ, tracking UI states and prepared WhatsApp drafts pass without page errors or failed assets. Evidence: `reference/wow/deployment/http.json` and `browser.json`. No messages were sent by these checks.
 
-Future local updates: build with `npm run build`, then run `node .codex-tools/netlify-cli/node_modules/netlify-cli/bin/run.js deploy --prod --no-build --dir dist --site 5e6d5b48-0a27-49fa-9bb1-1de904523c03`. The CLI bundles the configured tracking function and uploads the site. Keep the Netlify login local; never place its credential in source or browser code.
+## Git-based continuous deployment
+
+The existing `wow-shipping` project is connected to `mitalilily/wow-shipping` on GitHub. Pushes to `main` trigger Netlify through an active repository webhook. Netlify checks out the repository with a read-only deploy key, runs `npm run build` at the repository root, publishes `dist`, and bundles `netlify/functions`.
+
+Builds are enabled. Configuration remains in `netlify.toml` with Node 24. No Netlify credentials or deploy-key private material are stored in this repository. The integration state and account credentials remain outside tracked source.
+
+For future updates, commit and push changes to `main`; manual CLI uploads are unnecessary. Check the [Netlify deploy history](https://app.netlify.com/projects/wow-shipping/deploys) for each build result. Failed builds do not replace the last successfully published site.
