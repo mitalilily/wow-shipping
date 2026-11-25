@@ -273,7 +273,7 @@ body{color:var(--wow-ink)}
  .wow-home .home-hero-text-wrap{padding-left:35vw!important;padding-right:3vw!important}
  .wow-home .home-hero-title,.wow-home .home-hero-title .h1{width:min(680px,41vw)!important}
  .wow-home .home-hero-desc{width:min(520px,39vw)}
- .wow-home .home-hero-globe{right:calc(24vw - 100svh)}
+ .wow-home .home-hero-globe{right:calc(15vw - 100svh)}
 }
 @media(min-width:1024px) and (max-width:1199px){
  .wow-home .home-hero-text-wrap{padding-left:28vw!important;padding-right:3vw!important}
