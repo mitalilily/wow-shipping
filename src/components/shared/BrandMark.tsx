@@ -1,0 +1,1 @@
+export function BrandMark({large=false}:{large?:boolean}){return <span className={'wow-wordmark wow-brand-mark'+(large?' wow-wordmark-large':'')} aria-label="WOW Shippings"><img className="wow-brand-symbol" src="/assets/wow/brand/emblem.png" alt="" width="48" height="48"/><span className="wow-brand-name">wow<b>shippings</b></span></span>}

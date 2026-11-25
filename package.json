@@ -1,0 +1,29 @@
+{
+  "name": "wow-shipping",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test:browser": "node tests/browser/wow.mjs",
+    "prepare:site": "node tools/wow/prepare.mjs",
+    "predev": "npm run prepare:site",
+    "prebuild": "npm run prepare:site",
+    "test:unit": "node --test tests/unit/*.test.ts"
+  },
+  "dependencies": {
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.2.1",
+    "playwright": "1.64.1",
+    "typescript": "7.0.2",
+    "vite": "8.3.6"
+  }
+}

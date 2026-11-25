@@ -1,0 +1,17 @@
+import {chromium} from 'playwright';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+await fs.mkdir('reference/wow/runtime',{recursive:true});
+const browser=await chromium.launch({channel:'chrome',headless:true});const page=await browser.newPage({viewport:{width:1440,height:900}});const errors=[];page.on('pageerror',e=>errors.push(e.stack||String(e)));const report={errors,captures:[],resize:[],checks:{}};
+const move=async y=>{await page.evaluate(y=>window.__WOW_RUNTIME__.lenis.scrollTo(y,{immediate:true,force:true}),y);await page.waitForTimeout(250)};
+try{
+ await page.goto('http://127.0.0.1:4173/#services');await page.waitForFunction(()=>window.__WOW_RUNTIME__,null,{timeout:60000});await page.evaluate(()=>window.__WOW_RUNTIME__.gsap.ticker.lagSmoothing(0));await page.waitForFunction(()=>window.__WOW_RUNTIME__.ready&&!window.__WOW_INITIAL_HASH__,null,{timeout:60000});await page.waitForTimeout(1000);assert.ok(await page.locator('#services').evaluate(e=>Math.abs(e.getBoundingClientRect().top-88)<8));report.checks.servicesAnchor=true;await page.screenshot({path:'reference/wow/runtime/services-anchor.png'});
+ const maximum=await page.evaluate(()=>document.documentElement.scrollHeight-innerHeight);for(let y=await page.evaluate(()=>scrollY);y<maximum;y+=720)await move(y);await move(maximum);
+ const air=await page.locator('.home-testi').evaluate(e=>({top:e.getBoundingClientRect().top+scrollY,height:e.getBoundingClientRect().height}));
+ for(const fraction of [0,.35,.7]){await move(air.top+fraction*air.height);await page.waitForTimeout(750);const filename=`air-${fraction}.png`;await page.screenshot({path:'reference/wow/runtime/'+filename});report.captures.push({file:filename,scrollY:await page.evaluate(()=>scrollY),plane:await page.locator('.wow-flight-aircraft').evaluate(e=>({opacity:getComputedStyle(e).opacity,rect:{width:e.getBoundingClientRect().width,height:e.getBoundingClientRect().height}}))})}
+ await move(0);for(const width of [390,1440]){await page.setViewportSize({width,height:900});await page.waitForTimeout(2500);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));report.resize.push(width)}
+ await page.evaluate(()=>window.__WOW_RUNTIME__.destroy());await page.waitForTimeout(700);assert.equal(await page.evaluate(()=>window.__WOW_RUNTIME__.ScrollTrigger.getAll().length),0);report.checks.cleanup=true;
+ await page.goto('http://127.0.0.1:4173/contact/');await page.waitForSelector('[name=name]');await page.evaluate(()=>{window.open=()=>{throw new Error('Invalid input must not open WhatsApp')}});for(const name of ['name','origin','destination'])await page.locator(`[name=${name}]`).fill('   ');await page.locator('[name=phone]').fill('-------');await page.locator('[name=service]').selectOption({label:'Domestic shipping'});await page.getByRole('button',{name:'Continue on WhatsApp'}).click();assert.equal(await page.locator('.wow-enquiry-draft').count(),0);assert.ok(await page.locator('[name=phone]').evaluate(e=>!e.validity.valid));report.checks.invalidEnquiry=true;
+ for(const route of ['/insights/','/careers/','/community/','/industries/'])assert.equal((await page.request.get('http://127.0.0.1:4173'+route)).status(),404);report.checks.removedRoutes=true;
+ assert.equal(errors.length,0);report.passed=true;
+}catch(e){report.fatal=String(e);process.exitCode=1}finally{await browser.close();await fs.writeFile('reference/wow/runtime/results.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report))}

@@ -1,0 +1,1 @@
+export function ThemeBranding(){return <div className="wow-newsbar"><span>WOWSHIPPINGS — DOMESTIC &amp; INTERNATIONAL SHIPPING.</span><a href="/tracking/" data-barba-prevent="all">LIVE TRACKING PORTAL</a></div>}

@@ -1,0 +1,1 @@
+PASS: 12 original courier logos; branded aircraft asset; supplied emblem favicon; exact hero copy and four trust indicators; no Local labels in generated page content. Browser QA blocked by app runtime provisioning failure.

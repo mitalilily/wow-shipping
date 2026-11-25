@@ -1,0 +1,9 @@
+{
+  "theme": "User supplied cream/navy/orange globe reference (12.50.15)",
+  "fontFamily": "Source Sans 3, weights 400/600/800",
+  "courierLogoCount": 12,
+  "courierLogoSources": "reference/wow/refresh/courier-downloads.json + Wikimedia original Delhivery logo sourced from Delhivery",
+  "branding": "User supplied four-colour emblem, background cleaned with built-in image generation; aircraft and favicon use emblem",
+  "browserQA": "Blocked: CUA Windows sandbox provisioning service unavailable; no visual verification claimed",
+  "deploymentTarget": "https://wow-shipping.netlify.app/"
+}

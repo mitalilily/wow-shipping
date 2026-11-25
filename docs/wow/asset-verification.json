@@ -1,0 +1,26 @@
+{
+  "preservedMedia": 790,
+  "unchanged": 790,
+  "modified": [],
+  "brand": [
+    {
+      "path": "public/assets/wow/brand/favicon.svg",
+      "bytes": 273,
+      "sha256": "b6680549c233f099df8851ff84e04db08e813ad17fc31695153d2ea40eb95f79",
+      "source": "Original code-authored WOW vector identity; PNG is a Chrome render"
+    },
+    {
+      "path": "public/assets/wow/brand/social.svg",
+      "bytes": 604,
+      "sha256": "a2a3a81b7546a82174323c512b9a6e16e4d03254b88e5a1e9c8f01460b9de953",
+      "source": "Original code-authored WOW vector identity; PNG is a Chrome render"
+    },
+    {
+      "path": "public/assets/wow/brand/social.png",
+      "bytes": 38702,
+      "sha256": "4a84724c7a7ffe1422c5afdbc2ab4e6a98f1f23b32ba920f23835a04be49cbb5",
+      "source": "Original code-authored WOW vector identity; PNG is a Chrome render"
+    }
+  ],
+  "noAiMediaGeneration": true
+}

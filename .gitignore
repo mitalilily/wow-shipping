@@ -1,0 +1,18 @@
+.codex-tools/
+__pycache__/
+*.pyc
+/reference/*
+!/reference/asset-manifest.json
+/.clone-ui/
+/node_modules/
+/dist/
+/test-results/
+/.netlify/
+/.env
+/.env.*
+
+# Machine-specific agent configuration and installed skill libraries
+/.agents/
+/.codex/
+/CODEX_SKILLS_INVENTORY.md
+/CODEX_SKILLS_SETUP.md

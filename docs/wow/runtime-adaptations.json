@@ -1,0 +1,28 @@
+{
+  "source": "Original archived production modules; original files preserved",
+  "patches": [
+    "main.js",
+    "chunks/frame-sequence-DVzLzLQ6.js",
+    "chunks/helpers-1Wl9fi6w.js",
+    "chunks/Home-CZ3JhV-m.js",
+    "chunks/layout-BqW6AIsF.js",
+    "chunks/lenis-_dxIi_hK.js",
+    "chunks/my-flights-DRrlP7HY.js",
+    "chunks/OceanScene-CggVSafL.js",
+    "chunks/rolldown-runtime-DdACKOZr.js",
+    "chunks/scroll-CRhVCsWB.js",
+    "chunks/vendor-barba-DgBrL9HN.js",
+    "chunks/vendor-gsap-GRoENYFU.js",
+    "chunks/vendor-three-DebrQqf4.js",
+    "chunks/WakeSimulation-BBrDm1Iz.js"
+  ],
+  "changes": [
+    "WOW domain allowlist",
+    "Shared React header owns navigation",
+    "Only transport controllers are initialized",
+    "Local textures and globe data",
+    "Shader disposal guard preserved",
+    "India-facing globe entry",
+    "Runtime lifecycle bridge"
+  ]
+}

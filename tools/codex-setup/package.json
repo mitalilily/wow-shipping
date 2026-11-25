@@ -1,0 +1,13 @@
+{
+  "name": "landing-page-codex-tooling",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Isolated browser and inspection tools; not application dependencies",
+  "dependencies": {
+    "@ffmpeg-installer/win32-x64": "4.1.0",
+    "@ffprobe-installer/win32-x64": "5.1.0",
+    "agent-browser": "0.41.2",
+    "chrome-devtools-mcp": "1.12.0",
+    "ui-ux-pro-max-cli": "2.15.0"
+  }
+}

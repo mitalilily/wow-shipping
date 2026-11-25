@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Codex browser inspection fixture</title>
+<style>
+  body { margin: 0; font: 18px/1.5 system-ui, sans-serif; color: rgb(24,36,52); background: #f5f8fc; }
+  main { max-width: 900px; margin: auto; padding: 32px; }
+  canvas { display: block; width: 100%; max-width: 640px; height: auto; border: 2px solid #245; }
+  button,input { padding: 12px; font: inherit; }
+  button:hover { background: rgb(120,210,190); }
+  .spacer { height: 1100px; background: linear-gradient(#f5f8fc,#dbe6f5); }
+</style>
+<main>
+  <h1>Browser inspection validation</h1>
+  <p>Disposable tooling test. This is not the landing-page implementation.</p>
+  <label for="entry">Test text</label><input id="entry" autocomplete="off">
+  <button id="action">Record click</button><output id="result" aria-live="polite">Waiting</output>
+  <p id="network">Loading fixture data</p>
+  <canvas id="scene" width="640" height="360" aria-label="WebGL textured triangle"></canvas>
+  <div class="spacer"></div><p id="bottom">Scroll target</p>
+</main>
+<script src="/scene.js"></script>
+</html>

@@ -1,0 +1,1 @@
+Theme: supplied 2026-11-19 12.50.15 reference. Logo: supplied 2026-11-18 10.52.19 reference; background cleanup by built-in image generation. Typography: Source Sans 3, Google Fonts/Adobe, OFL. Official courier sources: reference/wow/refresh/courier-downloads.json. Listings do not imply partnerships.

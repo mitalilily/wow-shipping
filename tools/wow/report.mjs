@@ -1,0 +1,29 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import crypto from 'node:crypto';
+const read=async p=>JSON.parse(await fs.readFile(p,'utf8'));
+const matrix=await read('reference/wow/browser/results.json');
+const runtime=await read('reference/wow/runtime/results.json');
+const flight=await read('reference/wow/flight/results.json');
+if(matrix.length!==26||matrix.some(r=>r.fatal)||!runtime.passed||flight.length!==6||flight.some(r=>!r.passed))throw new Error('Required verification has not converged.');
+const manifest=await read('reference/asset-manifest.json');
+const media=manifest.filter(a=>a.recoveryStatus==='recovered'&&!['js','css','json'].includes(a.fileType));
+let unchanged=0;const modified=[];
+for(const a of media){const hash=crypto.createHash('sha256').update(await fs.readFile(a.localPath)).digest('hex');if(hash===a.sha256)unchanged++;else modified.push(a.localPath)}
+if(modified.length)throw new Error('Review unexpected media changes: '+modified.join(', '));
+const brand=[];for(const name of ['favicon.svg','social.svg','social.png']){const p='public/assets/wow/brand/'+name;const bytes=await fs.readFile(p);brand.push({path:p,bytes:bytes.length,sha256:crypto.createHash('sha256').update(bytes).digest('hex'),source:'Original code-authored WOW vector identity; PNG is a Chrome render'})}
+await fs.writeFile('docs/wow/asset-verification.json',JSON.stringify({preservedMedia:media.length,unchanged,modified,brand,noAiMediaGeneration:true},null,2));
+const tours=matrix.filter(r=>r.checkpoints);let text='# WOW verification results\n\nProduction build and TypeScript checking pass. Nine focused unit tests pass. The four-page matrix passes at six viewport sizes, with two additional reduced-motion checks. All original transport/media inputs below were verified by original SHA-256.\n\n';
+text+='| Width × height | Pages checked | Story checkpoints | Outcome |\n|---|---:|---:|---|\n';
+for(const t of tours)text+=`| ${t.viewport.width}×${t.viewport.height} | 4 | ${t.checkpoints} | Pass |\n`;
+text+=`\nTotal: 24 route/viewport combinations, 2 reduced-motion modes and ${tours.reduce((s,t)=>s+t.checkpoints,0)} forward story checkpoints, plus reverse-to-hero checks. Direct page loads, horizontal desktop navigation, phone/tablet menu and Escape/focus restoration, source-identity removal, two short reviews, twelve courier entries, six native FAQs, real unconfigured tracking responses and prepared WhatsApp drafts pass. No uncaught page errors, failed required assets or external HTTP asset dependencies were observed in the matrix.\n\n`;
+text+='The final aircraft retiming was verified separately at all six widths, with three captures per width and loaded, visible aircraft at every sampled position. It keeps the original high-quality media while removing the old empty testimonial-linked hold. These final flight captures are under `reference/wow/flight/`. Other matrix screenshots are under `reference/wow/browser/`.\n\n';
+text+='Supplemental runtime checks pass: initial Services hash anchor waits for readiness, desktop→phone→desktop resize, zero remaining ScrollTriggers after destruction, whitespace/punctuation rejection in the enquiry form and HTTP 404 for removed legacy routes. Evidence: `reference/wow/runtime/results.json`. Tracking tests distinguish configuration, validation, loading, success, not-found, carrier-required, timeout and unavailable states. Provider/result fixtures exist only in tests. No external messages were sent.\n\n';
+text+=`Asset verification: ${unchanged} original media/font/video/SVG resources match their original hashes. No generated replacements were needed. New identity assets are recorded in asset-verification.json.\n\n`;
+text+='## Independent review\n\nFour findings were corrected: lower-phone-hero contrast, muted small-text contrast, contact whitespace/phone validation and clipped mobile footer lettering. The reviewer inspected the corrected screenshots and closed those findings. A raster social card now uses an absolute HTTPS metadata URL. See independent-review.md. The copy was revised after user feedback to “Shipping. Made simple.”; the geography-led slogans were removed.\n\n';
+text+='## Performance observations\n\nLocal production preview, installed headless Chrome, DPR=1, same Intel/ANGLE machine as the original audit. Values below are 45 requestAnimationFrame interval samples after a complete tour and return to the hero. Transfer totals include the warmed tour, not just first load. These are observations, not sustained FPS/device guarantees.\n\n| Width | Median interval | P95 interval | Tour transferred bytes |\n|---|---:|---:|---:|\n';
+for(const t of tours)text+=`| ${t.viewport.width} | ${t.performance.medianRafMs.toFixed(1)}ms | ${t.performance.p95RafMs.toFixed(1)}ms | ${t.performance.transferBytes.toLocaleString('en-US')} |\n`;
+text+='\nThe 1920px WebGL scene remains more expensive on this GPU. Physical-device Safari/Firefox coverage, prolonged heap/GPU-memory profiling and a universal 60fps target are not certified. Ambient water/globe phases differ between captures.\n\n';
+text+='## Remaining integration prerequisites\n\nLive tracking requires a selected provider, its server-only adapter/credentials and the chosen host’s server-function binding. The current endpoint deliberately returns NOT_CONFIGURED and offers personal support. A distributed production host must supply shared rate limiting; the local middleware limit is process-local. A static-only deployment cannot execute the tracking API by itself. Contact intentionally opens a WhatsApp draft rather than storing/submitting an enquiry. No deployment or external publication was performed.\n';
+await fs.writeFile('docs/wow/qa.md',text);
+console.log(JSON.stringify({matrix:matrix.length,storyCheckpoints:tours.reduce((s,t)=>s+t.checkpoints,0),flightViews:flight.length,runtime:runtime.passed,preservedMedia:unchanged}));

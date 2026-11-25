@@ -1,0 +1,60 @@
+/** Business content is kept outside the recovered transport geometry. */
+export const site = {
+  name: 'WOW Shipping',
+  phone: '+91 7973546092', phoneHref: 'tel:+917973546092',
+  whatsapp: '917973546092', email: 'info@wowshippings.com',
+  location: 'Mohali, Punjab',
+  privacy: 'https://www.wowshippings.com/english-privacy-policy',
+  nav: [{label:'Home',href:'/'},{label:'About',href:'/about/'},{label:'Tracking',href:'/tracking/'},{label:'Contact Us',href:'/contact/'}],
+  hero: {kicker:'DOMESTIC + INTERNATIONAL • DOOR TO DOOR', lines:['From Your Door','To Theirs.','Anywhere In The World.'], subheading:'Doorstep Pickup. Doorstep Delivery.', description:'Domestic and international shipping for personal parcels and business shipments — picked up from your door and delivered to their door, with live tracking, transparent pricing and insured delivery.'},
+  intro: {title:'Shipping support, from enquiry to delivery.', description:'We handle everything. You just tell us where it goes. Tell us what you are sending and where it needs to go. We arrange pickup, documentation and delivery — for domestic and international shipments.', labels:['DOMESTIC','INTERNATIONAL','DOOR TO DOOR']},
+  services: [
+    {title:'Domestic shipping',description:'Courier services for documents, parcels and regular business dispatches.'},
+    {title:'International shipping',description:'Cross-border shipments with guidance on the next steps, documentation and available services.'},
+    {title:'Door-to-door delivery',description:'Doorstep pickup and doorstep delivery for personal parcels and business shipments.'},
+    {title:'Business shipments',description:'A conversation around your regular dispatches, consignment sizes and destinations.'},
+    {title:'Freight coordination',description:'Explore the right transport options for larger consignments and planned movements.'},
+    {title:'Tailored enquiries',description:'Tell us what needs to move. We’ll help you work through the practical next steps.'},
+  ],
+  reasons: [
+    {title:'Shipping around your needs',description:'Start with your parcel, destination and priorities. We help you explore the available options.'},
+    {title:'A team you can reach',description:'Speak with WOW Shipping by phone, email or WhatsApp when you need a clearer next step.'},
+    {title:'A clearer next step',description:'Understand what information to prepare, what to ask and how to move your enquiry forward.'},
+  ],
+  reviews:[
+    {name:'Ravi S.',role:'Export Manager',quote:'…everything was smooth and on time.'},
+    {name:'Neha T.',role:'Business Owner',quote:'…complete peace of mind.'},
+  ],
+  faq:[
+    {question:'How do I request a shipping quote?',answer:'Visit Contact Us and share the origin, destination, service category and approximate shipment details. You can continue your enquiry on WhatsApp or contact our team directly.'},
+    {question:'Can I enquire about domestic and international shipping?',answer:'Yes. WOW Shipping welcomes domestic and international shipping enquiries. Available routes, handling and collection options are confirmed for your shipment.'},
+    {question:'What shipment details should I provide?',answer:'Tell us what you are sending, where it is travelling from and to, and its approximate weight and dimensions if known. Our team can help with the next steps.'},
+    {question:'Where can I find my tracking number?',answer:'Look for the AWB or consignment number on your booking confirmation or shipment receipt. If you cannot locate it, contact the team that arranged the shipment.'},
+    {question:'Why might tracking updates take time?',answer:'Updates depend on the carrier’s scans and reporting. A recent handover, transit between facilities or customs processing can affect when the next event appears.'},
+    {question:'How do I contact WOW Shipping?',answer:'Call +91 7973546092, email info@wowshippings.com or continue an enquiry on WhatsApp. Share your AWB if your question is about an existing shipment.'},
+  ],
+  couriers:[
+    {id:'blue-dart',name:'Blue Dart',url:'https://www.bluedart.com/',mark:'BLUE DART',tone:'#1565ab'},
+    {id:'dtdc',name:'DTDC',url:'https://www.dtdc.com/',mark:'DTDC',tone:'#d92736'},
+    {id:'delhivery',name:'Delhivery',url:'https://www.delhivery.com/',mark:'DELHIVERY',tone:'#ed3237'},
+    {id:'india-post',name:'India Post',url:'https://www.indiapost.gov.in/',mark:'INDIA POST',tone:'#c72630'},
+    {id:'xpressbees',name:'Xpressbees',url:'https://www.xpressbees.com/',mark:'xpressbees',tone:'#ed6824'},
+    {id:'shadowfax',name:'Shadowfax',url:'https://www.shadowfax.in/',mark:'shadowfax',tone:'#ed6824'},
+    {id:'ekart',name:'Ekart',url:'https://www.ekartlogistics.in/',mark:'ekart',tone:'#1565ab'},
+    {id:'trackon',name:'Trackon',url:'https://www.trackon.in/',mark:'TRACKON',tone:'#174f9f'},
+    {id:'tci-express',name:'TCI Express',url:'https://www.tciexpress.in/',mark:'TCI EXPRESS',tone:'#d62037'},
+    {id:'professional',name:'The Professional Couriers',url:'https://www.tpcindia.com/',mark:'THE PROFESSIONAL COURIERS',tone:'#214a96'},
+    {id:'shree-maruti',name:'Shree Maruti',url:'https://shreemaruti.com/',mark:'SHREE MARUTI',tone:'#c52a36'},
+    {id:'skyking',name:'SkyKing',url:'https://skyking.co/',mark:'SkyKing',tone:'#e23632'},
+  ],
+} as const;
+
+export const media={
+  intro:'/assets/images/6a44eec1ed1af2c4c403dfca_intro-thumb.jpg',
+  truck:'/assets/wow/brand/truck-branded.svg',
+  container:'/assets/wow/brand/container-branded.svg',
+  plane:'/assets/wow/brand/plane-branded.svg',
+  ship:'/assets/images/6a44eec1ed1af2c4c403e800_home-ship.avif',
+  cloud:'/assets/images/6a44eec1ed1af2c4c403e809_cloud-template.avif',
+  freight:'/assets/images/6a44eec1ed1af2c4c403dfc3_footer-thumb.jpg',
+} as const;

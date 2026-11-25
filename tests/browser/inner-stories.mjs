@@ -1,0 +1,31 @@
+import {chromium} from 'playwright';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+const dir='reference/wow/inner-pages';await fs.mkdir(dir,{recursive:true});const results=[];
+const browser=await chromium.launch({channel:'chrome',headless:true});
+const widths=process.argv.slice(2).map(Number).filter(Boolean),sizes=[[390,844],[768,1024],[870,668],[1440,900],[1531,668],[1920,1080]].filter(([w])=>!widths.length||widths.includes(w));
+try{for(const [width,height]of sizes)for(const route of ['about','tracking','contact']){
+ const page=await browser.newPage({viewport:{width,height}}),errors=[],failed=[];page.on('pageerror',e=>errors.push(String(e)));page.on('response',r=>{if(r.status()>=400&&!r.url().includes('/api/tracking'))failed.push(r.url())});const report={width,height,route,errors,failed};results.push(report);
+ try{
+  await page.goto(`http://127.0.0.1:4173/${route}/`);await page.waitForSelector('h1');await page.waitForTimeout(1100);assert.equal(await page.locator('h1').count(),1);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await page.screenshot({path:`${dir}/${route}-${width}-hero.png`});
+  if(route==='contact'){
+   await page.evaluate(()=>{window.__opened=[];window.open=url=>{window.__opened.push(String(url));return null}});
+   await page.getByRole('button',{name:'International',exact:true}).click();assert.equal(await page.locator('[name=service]').inputValue(),'International shipping');assert.equal(await page.getByRole('button',{name:'International',exact:true}).getAttribute('aria-pressed'),'true');
+   for(const [key,value]of [['name','Story Test'],['phone','+91 9000000000'],['origin','Mohali'],['destination','London'],['notes','Books & documents']])await page.locator(`[name=${key}]`).fill(value);
+   assert.match(await page.locator('.wow-brief-route').innerText(),/Mohali[\s\S]*London/);assert.equal(await page.locator('.wow-brief-checklist .is-complete').count(),3);await page.locator('[name=service]').selectOption('Local delivery');assert.equal(await page.getByRole('button',{name:'Local delivery',exact:true}).getAttribute('aria-pressed'),'true');
+   await page.getByRole('button',{name:'Continue on WhatsApp'}).click();await page.getByRole('heading',{name:'Your message is ready.'}).waitFor();const opened=await page.evaluate(()=>window.__opened[0]);assert.equal(new URL(opened).pathname,'/917973546092');assert.match(new URL(opened).searchParams.get('text'),/Local delivery[\s\S]*Mohali[\s\S]*London/);report.enquiryAndBrief=true;
+  }
+  if(route==='tracking'){
+   await page.locator('#tracking-number').fill('STORY-test-123');await page.getByRole('button',{name:'Track a Shipment',exact:true}).click();await page.getByRole('heading',{name:'Let’s get you a personal update.'}).waitFor();assert.equal(await page.locator('.wow-tracking-result').count(),0);
+   for(const label of ['In transit','Out for delivery','Delivered','Registered']){const tab=page.getByRole('tab',{name:new RegExp(label)});await tab.click();assert.equal(await tab.getAttribute('aria-selected'),'true');await page.getByRole('tabpanel').waitFor();assert.ok(await page.getByRole('tabpanel').isVisible())}
+   await page.getByRole('tab',{name:/Registered/}).focus();await page.keyboard.press('End');assert.equal(await page.getByRole('tab',{name:/Delivered/}).getAttribute('aria-selected'),'true');await page.keyboard.press('Home');await page.keyboard.press('ArrowRight');assert.equal(await page.getByRole('tab',{name:/In transit/}).getAttribute('aria-selected'),'true');await page.locator('.wow-tracking-guide').evaluate(e=>window.scrollTo({top:e.getBoundingClientRect().top+scrollY-95,behavior:'instant'}));await page.waitForTimeout(900);await page.screenshot({path:`${dir}/${route}-${width}-guide.png`});report.statusGuideAndTracking=true;
+  }else{
+   const id=route==='about'?'about-journey':'contact-journey',positions=[];
+   for(const index of [0,1,2,1,0]){await page.locator(`#${id}-${index}`).evaluate(e=>window.scrollTo({top:e.getBoundingClientRect().top+scrollY-innerHeight*.35,behavior:'instant'}));await page.waitForTimeout(700);assert.equal(await page.locator('.wow-story-stage').getAttribute('data-active-chapter'),String(index));assert.equal(await page.locator('.wow-story-scene.is-active').count(),1);positions.push(index);assert.ok(await page.locator('.wow-story-scene.is-active img.wow-story-object').evaluate(e=>e.complete&&e.naturalWidth>0));if(index===1)await page.screenshot({path:`${dir}/${route}-${width}-chapter.png`})}
+   await page.locator('.wow-story-chapter-nav a').last().click();await page.waitForTimeout(1000);assert.equal(await page.locator('.wow-story-stage').getAttribute('data-active-chapter'),'2');report.forwardReverseChapters=positions;report.chapterNavigation=true;
+  }
+  await page.setViewportSize({width:width<768?1440:390,height:900});await page.waitForTimeout(600);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert.equal(await page.evaluate(()=>!!window.__WOW_RUNTIME__),false);assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);report.passed=true;
+ }catch(e){report.fatal=String(e);process.exitCode=1}console.log(JSON.stringify(report));await fs.writeFile(`${dir}/results.json`,JSON.stringify(results,null,2));await page.close();
+}
+for(const route of ['about','tracking','contact']){const page=await browser.newPage({viewport:{width:390,height:844},reducedMotion:'reduce'}),report={route,reduced:true};results.push(report);try{await page.goto(`http://127.0.0.1:4173/${route}/`);await page.waitForTimeout(500);assert.equal(await page.locator('canvas').count(),0);if(route!=='tracking'){assert.equal(await page.locator('.wow-story-stage').evaluate(e=>getComputedStyle(e).position),'relative');await page.locator('.wow-story-step').last().scrollIntoViewIfNeeded();assert.ok(await page.locator('.wow-story-step').last().isVisible())}assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));report.passed=true}catch(e){report.fatal=String(e);process.exitCode=1}console.log(JSON.stringify(report));await page.close()}
+}finally{await browser.close();await fs.writeFile(`${dir}/results.json`,JSON.stringify(results,null,2))}

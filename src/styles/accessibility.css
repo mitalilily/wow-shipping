@@ -1,0 +1,13 @@
+/* Visual reference styles live in the recovered stylesheet and section CSS. */
+a:focus-visible, button:focus-visible, [role="button"]:focus-visible, [role="tab"]:focus-visible {
+  outline: 2px solid #2254ff;
+  outline-offset: 5px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; }
+  .hover-line::after, .cta-circ, .cursor-trail-item, .partners-marquee {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
