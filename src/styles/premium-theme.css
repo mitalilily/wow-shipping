@@ -297,7 +297,7 @@ body{color:var(--wow-ink)}
  .wow-home .home-hero-globe{left:43vw;right:auto}
 }
 .wow-home .wow-globe-air{position:absolute;inset:0;z-index:4!important;pointer-events:none}
-@media(min-width:1200px){.wow-home .home-hero-globe{left:auto;right:3vw;top:120px;width:calc(100svh - 130px);height:calc(100svh - 130px)}}
+@media(min-width:1200px){.wow-home .home-hero-globe{left:auto;right:-10vw;top:155px;width:calc(100svh - 130px);height:calc(100svh - 130px)}}
 .wow-home .wow-globe-air-plane{position:absolute;left:0;top:0;width:150px;height:auto;opacity:0;transition:opacity .25s ease;filter:drop-shadow(0 12px 10px #000b) drop-shadow(0 0 8px #ffae5744);will-change:transform}
 .wow-home .home-hero-canvas{filter:none;opacity:1}
 .wow-home .globe-label-text{background:#101921dd;color:#fff;border:0;font-size:9px!important;padding:3px 5px;letter-spacing:.025em}
