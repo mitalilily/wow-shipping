@@ -89,6 +89,6 @@ for(const name of names){
  await fs.writeFile(path.join(out,name+'.json'),JSON.stringify(tree));
  const dir=['GlobalDecor','PageStyles'].includes(name)?'components/shared':['Preloader','PageTransition'].includes(name)?'components/preloader':`sections/${name}`;
  const shared=dir==='components/shared'?'./RecoveredTree':'../../components/shared/RecoveredTree';
- if(name!=='Testimonials'&&name!=='CompanyIntro')await fs.writeFile(path.join(root,'src',dir,name+'.tsx'),`import tree from '../../story/structure/${name}.json';\nimport {RecoveredTree} from '${shared}';\nexport function ${name}(){return <RecoveredTree tree={tree}/>;}\n`);
+ if(name!=='Testimonials')await fs.writeFile(path.join(root,'src',dir,name+'.tsx'),`import tree from '../../story/structure/${name}.json';\nimport {RecoveredTree} from '${shared}';\nexport function ${name}(){return <RecoveredTree tree={tree}/>;}\n`);
 }
 console.log('WOW: prepared original transport structure with brand content.');
