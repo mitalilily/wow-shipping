@@ -1,3 +1,15 @@
-import tree from '../../story/structure/CompanyIntro.json';
-import {RecoveredTree} from '../../components/shared/RecoveredTree';
-export function CompanyIntro(){return <RecoveredTree tree={tree}/>;}
+const services = [
+  {number:'01',title:'Domestic',description:'Across India, from your city to every state. Door-to-door pickup and delivery.',icon:<><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></>},
+  {number:'02',title:'International',description:'Global sea and air freight, with customs and documentation handled.',icon:<><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 4 6 4 9s-1 6-4 9c-3-3-4-6-4-9s1-6 4-9z"/></>},
+  {number:'03',title:'Local & express',description:'Same-city and nearby delivery. Fast, safe and fully tracked.',icon:<><path d="M12 21s7-5.4 7-11a7 7 0 0 0-14 0c0 5.6 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></>},
+];
+
+export function CompanyIntro(){return <div className="home-intro-wrap wow-support-wrap">
+  <section className="home-intro wow-support" aria-labelledby="wow-support-heading"><div className="wow-support-container">
+    <div className="wow-support-top"><p className="home-intro-label wow-support-eyebrow"><span className="txt">SHIPPING SUPPORT / FROM ENQUIRY TO DELIVERY</span><span className="home-intro-label-line"/></p><p className="wow-support-top-note">Domestic · International · Local</p></div>
+    <div className="wow-support-heading-row"><div className="home-intro-title wow-support-heading"><h2 className="heading" id="wow-support-heading">Your cargo.<br/><span>Our promise.</span><br/>Delivered.</h2></div><div className="home-intro-desc wow-support-intro"><p className="txt">We handle everything. You just tell us where it goes.</p><p>One team, end to end.</p></div></div>
+    <div className="wow-support-content"><div className="home-intro-thumb wow-support-visual"><img src="/assets/images/shipping-support-port.png" alt="Cargo ship, trucks and containers at a port" loading="lazy"/><span className="wow-support-visual-shade" aria-hidden="true"/><div className="wow-support-visual-caption"><span className="wow-support-cross" aria-hidden="true">✳</span><p>We handle everything.<br/>You just tell us<br/>where it goes.</p><span className="wow-support-visual-foot">PICKUP <i/> DOCUMENTATION <i/> DELIVERY</span></div></div>
+      <div className="home-intro-stats wow-support-services" aria-label="Shipping services">{services.map(({number,title,description,icon})=><article className="home-intro-stats-item wow-support-service" key={number}><div className="wow-support-service-top"><span>{number} / 03</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{icon}</svg></div><div className="home-intro-stats-item-desc"><h3 className="txt">{title}</h3></div><p>{description}</p><div className="home-intro-stats-item-line"/></article>)}</div>
+    </div><div className="wow-support-bottom"><p>Tell us what you are sending and where it needs to go. We arrange pickup, documentation and delivery.</p><a className="home-intro-btn wow-support-action" href="/contact/" data-barba-prevent="all">Discuss your shipment <span aria-hidden="true">↗</span></a></div>
+  </div></section>
+</div>}
