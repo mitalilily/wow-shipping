@@ -272,6 +272,8 @@ body{color:var(--wow-ink)}
 .wow-hero-subheading{font-weight:700}
 .wow-home .home-hero-globe{right:-16vw}
 .wow-home .home-hero-globe[data-init-hidden]{opacity:1;visibility:visible}
+.wow-home .home-hero-globe:after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;background:url('/assets/wow/brand/globe-first-paint.webp') center/100% 100% no-repeat;opacity:1;transition:opacity .3s ease}
+.wow-home .home-hero-globe:has(.home-hero-canvas[data-land-ready]):after{opacity:0}
 .wow-home .home-hero-globe:before{inset:3.5%;background:radial-gradient(ellipse at 58% 115%,#0852d3 0%,#071953 19%,transparent 53%),radial-gradient(ellipse at 46% -6%,#db4f14 0%,#5d2417 9%,transparent 27%),radial-gradient(circle at 45% 38%,#070b16 5%,#01040b 66%,#010510 100%);box-shadow:inset 0 14px 19px -11px #ff7b27,inset 0 -20px 24px -15px #2caaff,0 16px 65px #0548ba60,0 0 35px #ef7a4140}
 @media(min-width:1200px){
  .wow-home .home-hero-text-wrap{padding-left:25vw!important;padding-right:3vw!important}
