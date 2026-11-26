@@ -33,7 +33,10 @@ for(const relative of ['main.js',...list.filter(x=>x.endsWith('.js')).map(x=>'ch
  if(relative.includes('OceanScene-'))text=text.replaceAll('new URL("/",','new URL("/assets/wow-runtime/",');
  if(relative.includes('vendor-three-'))text=text.replace('i.forEach(function(t){St.get(t).currentProgram.isReady()&&i.delete(t)})','i.forEach(function(t){const p=St.get(t).currentProgram;(!p||p.isReady())&&i.delete(t)})');
  if(relative.includes('Home-')){
-  text=text.replaceAll('this._globePhi=3.8','this._globePhi=2.8').replaceAll('this._globePhi = 3.8','this._globePhi = 2.8');
+  // Keep the India–Africa routes facing the visitor while the globe gently turns.
+  const originalTick='this._globePhi+=.0015*e';
+  if(!text.includes(originalTick))throw new Error('Inspect globe ticker before adapting');
+  text=text.replace(originalTick,'this._globePhase=(this._globePhase||0)+a/9000;this._globePhi=3.8+.32*Math.sin(this._globePhase)');
   const truckManifest=text.match(/S=JSON\.parse\('(\[[^']+\])'\)/);
   if(!truckManifest)throw new Error('Inspect truck sequence manifest before adapting');
   const truckFrames=JSON.parse(truckManifest[1]);
@@ -43,6 +46,9 @@ for(const relative of ['main.js',...list.filter(x=>x.endsWith('.js')).map(x=>'ch
  if(relative.includes('my-flights-')){
   const planeAnchor='const lt=new r,ct=new r,dt=new r,gt=new r,ut=';
   if(!text.includes(planeAnchor)||!text.includes('J.update(),k.render(I,K),j.render(I,K)'))throw new Error('Inspect globe projection before adapting aircraft');
+  const arcMask='if (vProgress < st || vProgress > en) discard;\\n\\t\\t\\t\\tdiffuseColor.a *= smoothstep(st, en + 0.001, vProgress);';
+  if(!text.includes(arcMask))throw new Error('Inspect route shader before keeping the route visible');
+  text=text.replace(arcMask,'float pulse = smoothstep(st, st + 0.04, vProgress) * (1.0 - smoothstep(en - 0.04, en, vProgress));\\n\\t\\t\\t\\tdiffuseColor.a *= 0.62 + 0.38 * pulse;');
   const planeMotion=`const wowPlane=n.parentNode?.querySelector('.wow-globe-air-plane'),wowRoute=M.flightsData?.flights?.find(f=>f.status&&f.to==='CPT'),wowFrom=wowRoute&&D(wowRoute.startLat,wowRoute.startLng,1.002),wowTo=wowRoute&&D(wowRoute.endLat,wowRoute.endLng,1.002),wowLift=wowRoute?M.arcAltBase+Math.min(.5,wowFrom.distanceTo(wowTo)*M.arcAltMultiplier):0,wowPosition=new r,wowAhead=new r,wowMotionStart=performance.now();function wowArcPoint(progress,target){return target.copy(wowFrom).lerp(wowTo,progress).normalize().multiplyScalar(1.002+4*wowLift*progress*(1-progress))}function wowUpdatePlane(){if(!wowPlane||!wowRoute)return;const progress=((performance.now()-wowMotionStart)/15000)%1;wowArcPoint(progress,wowPosition);wowArcPoint(Math.min(.999,progress+.008),wowAhead);q.updateMatrixWorld(!0);K.updateMatrixWorld();q.localToWorld(wowPosition);q.localToWorld(wowAhead);const inFront=wowPosition.z>.12;wowPosition.project(K);wowAhead.project(K);const width=n.clientWidth,height=n.clientHeight,x=(wowPosition.x+1)*width/2,y=(1-wowPosition.y)*height/2,ax=(wowAhead.x+1)*width/2,ay=(1-wowAhead.y)*height/2;wowPlane.style.transform='translate3d('+x+'px,'+y+'px,0) translate(-50%,-50%) rotate('+Math.atan2(ay-y,ax-x)+'rad)';wowPlane.style.opacity=inFront&&progress>.025&&progress<.975&&x>0&&x<width&&y>0&&y<height?'1':'0';wowPlane.dataset.route='MOH-CPT'};`;
   text=text.replace(planeAnchor,planeMotion+planeAnchor);
   text=text.replace('J.update(),k.render(I,K),j.render(I,K)','J.update(),wowUpdatePlane(),k.render(I,K),j.render(I,K)');
