@@ -256,6 +256,9 @@ body{color:var(--wow-ink)}
 .wow-home .home-service-sub-wrap{color:#17191f}
 .wow-home .home-service-sub-wrap .heading,.wow-home .home-service-sub-title .heading,.wow-home .home-service-sub-title .split-line{color:#17191f!important;-webkit-text-fill-color:#17191f!important;background:none!important}
 .wow-home .home-service-sub-desc .txt,.wow-home .home-service-sub-desc .split-line{color:#48535b!important;-webkit-text-fill-color:#48535b!important;background:none!important}
+.wow-home .home-service-sub-title .heading *{color:#17191f!important;-webkit-text-fill-color:#17191f!important}
+.wow-home .home-service-sub-desc .txt *{color:#48535b!important;-webkit-text-fill-color:#48535b!important}
+.wow-home .home-why-cloud-decor-item img{opacity:.18!important}
 .wow-home .home-service-desc.sub,.wow-home .home-service-desc.sub *,.wow-home .home-service-sub-wrap,.wow-home .home-service-sub-wrap *{-webkit-user-select:none!important;user-select:none!important}
 .wow-home .home-service-desc.sub ::selection,.wow-home .home-service-sub-wrap ::selection{background:transparent;color:inherit}
 
