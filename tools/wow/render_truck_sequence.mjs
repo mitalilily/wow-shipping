@@ -84,10 +84,10 @@ for (const [kind, filename] of [
       }
       ctx.putImageData(pixels, 0, 0);
     } else {
-      ctx.drawImage(mark, 1350, 690, 240, 240);
+      ctx.drawImage(mark, 540, 460, 600, 600);
       ctx.fillStyle = '#0a2043';
-      ctx.font = '700 190px Arial, sans-serif';
-      ctx.fillText('WOWSHIPPINGS', 1640, 875);
+      ctx.font = '700 365px Arial, sans-serif';
+      ctx.fillText('WOWSHIPPINGS', 1300, 900);
     }
     const exportCanvas = document.createElement('canvas');
     exportCanvas.width = 1920; exportCanvas.height = 539;
