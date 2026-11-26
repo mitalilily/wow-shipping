@@ -33,6 +33,16 @@ for(const relative of ['main.js',...list.filter(x=>x.endsWith('.js')).map(x=>'ch
  if(relative.includes('OceanScene-'))text=text.replaceAll('new URL("/",','new URL("/assets/wow-runtime/",');
  if(relative.includes('vendor-three-'))text=text.replace('i.forEach(function(t){St.get(t).currentProgram.isReady()&&i.delete(t)})','i.forEach(function(t){const p=St.get(t).currentProgram;(!p||p.isReady())&&i.delete(t)})');
  if(relative.includes('Home-')){
+  // Hide the old crane canvas in the scrubbed timeline as the truck arrives.
+  // A callback alone can leave both crane views visible after a scroll jump.
+  const craneHandoff='$(this.el).find(".home-service-speed-inner").removeClass("active")}}}).to($(this.el).find(".home-service-stick.second-screen"),{top:0,ease:"sine.inOut",duration:1},"<=0")';
+  if(!text.includes(craneHandoff))throw new Error('Inspect desktop crane handoff before adapting');
+  text=text.replace(craneHandoff,'$(this.el).find(".home-service-speed-inner").removeClass("active")}}}).to($(this.el).find(".home-service-crane-sq"),{autoAlpha:0,duration:0,ease:"none"}).to($(this.el).find(".home-service-stick.second-screen"),{top:0,ease:"sine.inOut",duration:1},"<=0")');
+  const craneEnter='$(this.el).find(".home-service-speed-inner").addClass("active")},onLeaveBack:';
+  const craneLeave='$(this.el).find(".home-service-speed-inner").removeClass("active")}}})';
+  if(!text.includes(craneEnter)||!text.includes(craneLeave))throw new Error('Inspect crane handoff callbacks before adapting');
+  text=text.replace(craneEnter,'$(this.el).find(".home-service-first-screen").addClass("is-truck-handoff"),$(this.el).find(".home-service-speed-inner").addClass("active")},onLeaveBack:');
+  text=text.replace(craneLeave,'$(this.el).find(".home-service-first-screen").removeClass("is-truck-handoff"),$(this.el).find(".home-service-speed-inner").removeClass("active")}}})');
   // Keep the India–Africa routes facing the visitor while the globe gently turns.
   const originalTick='this._globePhi+=.0015*e';
   if(!text.includes(originalTick))throw new Error('Inspect globe ticker before adapting');

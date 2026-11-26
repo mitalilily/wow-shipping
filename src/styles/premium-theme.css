@@ -74,6 +74,7 @@ body{color:var(--wow-ink)}
 .wow-cargo-brand{position:absolute;left:33%;top:47%;z-index:10;display:flex;align-items:center;gap:6px;width:35%;padding:5px;background:#fffdf3c9;pointer-events:none;transform:skewY(-2deg)}
 .wow-cargo-brand img{width:26px;height:26px;object-fit:contain}
 .wow-home .home-service-truck-cont img{filter:drop-shadow(0 7px 9px #142d3c38)}
+.wow-home .home-service-first-screen.is-truck-handoff .home-service-crane-sq{opacity:0!important;visibility:hidden!important}
 .wow-cargo-brand span{font-family:var(--wow-font);font-size:14px;font-weight:700;letter-spacing:-.5px;color:#0a2043}
 
 .wow-section{padding-left:4%;padding-right:4%;background:var(--wow-paper);color:var(--wow-ink)}
