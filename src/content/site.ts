@@ -39,6 +39,7 @@ export const site = {
     {id:'dhl',name:'DHL',url:'https://www.dhl.com/',mark:'DHL',tone:'#d40511'},
     {id:'aramex',name:'Aramex',url:'https://www.aramex.com/',mark:'aramex',tone:'#ed1c24'},
     {id:'delhivery',name:'Delhivery',url:'https://www.delhivery.com/',mark:'DELHIVERY',tone:'#ed3237'},
+    {id:'movin',name:'MOVIN',url:'https://www.movin.in/',mark:'MOVIN',tone:'#261817'},
     {id:'blue-dart',name:'Blue Dart',url:'https://www.bluedart.com/',mark:'BLUE DART',tone:'#1565ab'},
     {id:'dtdc',name:'DTDC',url:'https://www.dtdc.com/',mark:'DTDC',tone:'#d92736'},
     {id:'india-post',name:'India Post',url:'https://www.indiapost.gov.in/',mark:'INDIA POST',tone:'#c72630'},
