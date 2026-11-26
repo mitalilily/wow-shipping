@@ -81,7 +81,7 @@ for(const name of names){
   const content=find(tree,'home-testi-content');if(content)content.children=[];
  }
  if(name==='Preloader'||name==='PageTransition'){
-  for(const c of ['loader-logo-ic','trans-logo'])for(const el of all(tree,c))el.children=[node('img','wow-loader-emblem',[],{src:'/assets/wow/brand/emblem.png',alt:'WOW Shippings'})];
+  for(const c of ['loader-logo-ic','trans-logo'])for(const el of all(tree,c))el.children=[node('img','wow-loader-emblem',[],{src:'/assets/wow/brand/emblem-small.webp',alt:'WOW Shippings'})];
   const countries=['SHIPPING','PICKUP','HANDLING','IN TRANSIT','CONNECTIONS','ARRIVAL','HANDOVER','SUPPORT','DELIVERY'];let count=0;
   walk(tree,n=>{n.children=n.children.map(c=>typeof c==='string'&&/^(Australia|New Zealand|Hong Kong|China|Vietnam|United States|THAILAND|Germany|United Kingdom)$/.test(c.trim())?countries[count++%countries.length]:c)});
   const serviceItems=all(tree,'loader-service-item');serviceItems.forEach((n,i)=>{const t=find(n,'txt');if(t)t.children=[site.services[i%6].title]});
