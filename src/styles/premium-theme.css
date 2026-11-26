@@ -250,6 +250,13 @@ body{color:var(--wow-ink)}
 .wow-home .home-service-sub-wrap{color:#fffaf2}
 .wow-home .home-service-sub-desc .txt,.wow-home .home-service-sub-desc .split-line{color:#dce2ec!important;-webkit-text-fill-color:#dce2ec;background:none!important}
 
+/* The service story's cards sit on white; keep their text readable after reveal. */
+.wow-home .home-service-sub-wrap{color:#17191f}
+.wow-home .home-service-sub-wrap .heading,.wow-home .home-service-sub-title .heading,.wow-home .home-service-sub-title .split-line{color:#17191f!important;-webkit-text-fill-color:#17191f!important;background:none!important}
+.wow-home .home-service-sub-desc .txt,.wow-home .home-service-sub-desc .split-line{color:#48535b!important;-webkit-text-fill-color:#48535b!important;background:none!important}
+.wow-home .home-service-desc.sub,.wow-home .home-service-desc.sub *,.wow-home .home-service-sub-wrap,.wow-home .home-service-sub-wrap *{-webkit-user-select:none!important;user-select:none!important}
+.wow-home .home-service-desc.sub ::selection,.wow-home .home-service-sub-wrap ::selection{background:transparent;color:inherit}
+
 /* Reference direction: a light atmospheric page, with the dark colour confined to the globe. */
 @font-face{font-family:Manrope;src:url('/assets/fonts/Manrope-Medium.ttf') format('truetype');font-weight:400 600;font-display:swap}
 @font-face{font-family:Manrope;src:url('/assets/fonts/Manrope-ExtraBold.ttf') format('truetype');font-weight:700 900;font-display:swap}

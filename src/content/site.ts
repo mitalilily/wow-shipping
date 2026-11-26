@@ -50,7 +50,6 @@ export const site = {
     {id:'tci-express',name:'TCI Express',url:'https://www.tciexpress.in/',mark:'TCI EXPRESS',tone:'#d62037'},
     {id:'professional',name:'The Professional Couriers',url:'https://www.tpcindia.com/',mark:'THE PROFESSIONAL COURIERS',tone:'#214a96'},
     {id:'shree-maruti',name:'Shree Maruti',url:'https://shreemaruti.com/',mark:'SHREE MARUTI',tone:'#c52a36'},
-    {id:'skyking',name:'SkyKing',url:'https://skyking.co/',mark:'SkyKing',tone:'#e23632'},
   ],
 } as const;
 
