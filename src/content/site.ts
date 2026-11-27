@@ -57,7 +57,7 @@ export const media={
   intro:'/assets/images/6a44eec1ed1af2c4c403dfca_intro-thumb.jpg',
   truck:'/assets/wow/brand/truck-branded-blue.svg',
   container:'/assets/wow/brand/container-branded.svg',
-  plane:'/assets/wow/brand/plane-branded.svg',
+  plane:'/assets/wow/brand/plane-branded-centered.svg',
   ship:'/assets/images/6a44eec1ed1af2c4c403e800_home-ship.avif',
   cloud:'/assets/images/6a44eec1ed1af2c4c403e809_cloud-template.avif',
   freight:'/assets/images/6a44eec1ed1af2c4c403dfc3_footer-thumb.jpg',
