@@ -1,10 +1,11 @@
 import {chromium} from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
+const origin=process.env.TEST_ORIGIN||'http://127.0.0.1:4173';
 const browser=await chromium.launch({channel:'chrome',headless:true});const results=[];await fs.mkdir('reference/wow/flight',{recursive:true});
 try{for(const [width,height]of [[1440,900],[1920,1080],[768,1024],[390,844],[870,668],[1531,668]]){
  const page=await browser.newPage({viewport:{width,height}});const errors=[];page.on('pageerror',e=>errors.push(e.stack||String(e)));const result={width,height,errors,captures:[]};results.push(result);
- try{await page.goto('http://127.0.0.1:4173/');await page.waitForFunction(()=>window.__WOW_RUNTIME__,null,{timeout:60000});await page.evaluate(()=>window.__WOW_RUNTIME__.gsap.ticker.lagSmoothing(0));await page.waitForFunction(()=>window.__WOW_RUNTIME__.ready,null,{timeout:60000});
+ try{await page.goto(origin);await page.waitForFunction(()=>window.__WOW_RUNTIME__,null,{timeout:60000});await page.evaluate(()=>window.__WOW_RUNTIME__.gsap.ticker.lagSmoothing(0));await page.waitForFunction(()=>window.__WOW_RUNTIME__.ready,null,{timeout:60000});
   const stage=await page.locator('.wow-flight-section').evaluate(e=>({top:e.getBoundingClientRect().top+(innerWidth<=767?document.querySelector('.body-inner').scrollTop:scrollY),height:e.getBoundingClientRect().height}));
   const move=async y=>{await page.evaluate(y=>window.__WOW_RUNTIME__.lenis.scrollTo(y,{immediate:true,force:true}),y);await page.waitForTimeout(220)};
   for(let y=0;y<stage.top;y+=Math.floor(height*.8))await move(y);

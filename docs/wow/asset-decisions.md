@@ -22,3 +22,13 @@ No AI still/video generation or external paid model calls were needed. No lower-
 Latest footer revision: the retained `6a44eec1ed1af2c4c403dfc5_map.png` supplies the dotted world-map background. The original scatter engine is reused with a new code-typeset WOW SHIPPING alpha mask, replacing the old carrier mask. No external media was downloaded or generated. The user-requested ribbon removal changes decorative SVG rendering only; transport media remain intact.
 
 Animated inner pages reuse the existing container, truck and aircraft at their original quality, with new scene compositions and restrained transform-based movement. The sea-to-air handoff reuses `6a44eec1ed1af2c4c403e809_cloud-template.avif` in two separately moving foreground banks. No new image generation, external imagery or additional rendering engine was required.
+
+
+## Shipping support photograph — November 2026
+
+- Asset: `public/assets/wow/brand/shipping-port.webp`, a 1400px WebP derivative.
+- Photographer: Daniel Miksha, aerial container handling at the Port of Vancouver.
+- Source: https://unsplash.com/photos/aerial-view-of-stacked-shipping-containers-at-a-port-37mW7MvAOvU
+- License: https://unsplash.com/license — permits commercial use and redistribution in the website.
+- The image illustrates freight handling; it does not identify a WOW-owned facility.
+- The aircraft's existing SVG branding is centred over the fuselage and extended horizontally. Original aircraft imagery and other vehicle assets are preserved.

@@ -25,8 +25,8 @@ for(const relative of ['main.js',...list.filter(x=>x.endsWith('.js')).map(x=>'ch
   text=text.replace('this.restoreBodyScroll(),s.refresh(),this.oncePlay(e)','this.restoreBodyScroll(),s.refresh(),window.__WOW_START_SCROLL__>0&&p.lenis?.scrollTo(window.__WOW_START_SCROLL__,{immediate:!0,force:!0}),this.oncePlay(e)');
   const min='Object.values(e).map(e=>new e)';
   const formatted='Object.values(e).map((e) => new e())';
-  if(text.includes(min))text=text.replace(min,'Object.entries(e).filter(([k])=>!["Partners","Insight","Faq","Cta","Footer","Testi"].includes(k)).map(([,v])=>new v)');
-  else if(text.includes(formatted))text=text.replace(formatted,'Object.entries(e).filter(([k])=>!["Partners","Insight","Faq","Cta","Footer","Testi"].includes(k)).map(([,v])=>new v())');
+  if(text.includes(min))text=text.replace(min,'Object.entries(e).filter(([k])=>!["Partners","Insight","Faq","Cta","Footer","Testi","Intro"].includes(k)).map(([,v])=>new v)');
+  else if(text.includes(formatted))text=text.replace(formatted,'Object.entries(e).filter(([k])=>!["Partners","Insight","Faq","Cta","Footer","Testi","Intro"].includes(k)).map(([,v])=>new v())');
   else throw new Error('Inspect Home controller registry before adapting');
   text+='\nwindow.__WOW_RUNTIME__={gsap:t,ScrollTrigger:s,get lenis(){return p.lenis},get home(){return te.home},get ready(){return !!G.tlLoadMaster&&G.tlLoadMaster.progress()>=1},destroy(){try{I.default.destroy()}catch{}try{te.home.destroy({current:{container:document.querySelector(".main-inner")},next:{container:document.querySelector(".main-inner")}})}catch{}P.destroy();s.getAll().forEach(st=>st.kill());p.lenis?.destroy();document.querySelectorAll("webflow-3d").forEach(el=>el.destroy?.())}};window.__UC_RECONSTRUCTION__=window.__WOW_RUNTIME__;\n';
  }

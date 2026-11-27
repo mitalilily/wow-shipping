@@ -6,6 +6,7 @@ import './styles/accessibility.css';
 import './styles/wow.css';
 import './styles/inner-stories.css';
 import './styles/premium-theme.css';
+import './styles/shipping-refinements.css';
 
 const root=document.getElementById('root');
 if(!root)throw new Error('Missing application root');
